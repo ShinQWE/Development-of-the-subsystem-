@@ -1,0 +1,42 @@
+<div id="header3">    {{> header3}}        </div>
+<link rel="stylesheet" href="css/resume.css" />
+<span class="Title">Редактировать вакансии</span> <br>
+<a href="javascript:f_back()" id="num_vac_left"> &#9668;</a> Вакансия <span id="num_vac"> </span ><a href="javascript:f_forward()"  id="num_vac_right">  &#9658; </a>
+
+
+    <div>Должность</div>                                <div>  <input type="text" name="Vac_JobTitle" id="Vac_JobTitle" value="" /></div>
+    <div>Должностные обязанности</div>   <div><textarea rows="2" cols="40" name="Vac_JobResp" id="Vac_JobResp" value=""></textarea></div>
+    <div>Степень занятости</div>                    <div>  <input type="text" name="Vac_JobType" id="Vac_JobType" value="" /></div>
+    <div>График  работы</div>                        <div>  <input type="text" name="Vac_Schedule" id="Vac_Schedule" value="" /></div>
+    <div>Зарплата </div>                                   <div>
+        <input type="text" name="Vac_Salary" id="Vac_Salary" value="" style="width:202px" />
+        <input type="number" name="Vac_Salary_1" id="Vac_Salary_1" value="" style="width:90px" />
+    </div>
+    <div>Наличие соцпакета </div>              <div> <input type="checkbox" name="Vac_SocPack" id="Vac_SocPack" value="" style="width:50px" /></div>
+
+
+
+
+
+    <span id="vacs"> {{VACS}}</span>
+
+    <script>
+        var N_Vac, N_Vac_all = 0;
+
+        function f_editVac_1() {
+            var obj = document.getElementById("vacs").innerHTML;
+            if (obj == "" || obj == null)            {                document.getElementByID("num_vac").innerHTML = 0; return;            }
+            var str = obj.split('◤');
+            N_Vac_all = str.length;
+            alert(str.length);
+            N_Vac = 1;
+            document.getElementById("num_vac").innerHTML = N_Vac;
+            FillVacancy(N_Vac);                        //    for (var i = 0; i < n; i++)
+        }
+        function f_back() { N_Vac--; if (N_Vac < 0) N_Vac = 0; document.getElementById("num_vac").innerHTML = N_Vac;  }
+        function f_forward() { N_Vac++; if (N_Vac >= N_Vac_all) N_Vac--; document.getElementById("num_vac").innerHTML = N_Vac; }
+        function FillVacancy(N_Vac) {   }
+
+        f_editVac_1()
+
+    </script>

@@ -1,0 +1,72 @@
+<div id="header3">    {{> header3}}        </div>
+<link rel="stylesheet" href="css/personalArea.css" />
+
+<div class="personal_area_grid" id="content">
+    <div>
+        <a class="personal_area_ref" onclick="f_employers_2()">
+            <span style="line-height:25px;font:400  1.2rem calibri">      Продолжить как анонимный пользователь            </span>
+        </a>
+    </div>
+
+    <div>
+        <h3 class="personal_area_h3">&nbsp; Вход в личный кабинет работодателя</h3>
+        <form class="personal_area_frm" method="post" id="frm_reg">
+            <label> Логин: </label>  <br>
+            <input type="text" name="login" id="login" value="" /><br>
+            <label> Пароль:</label>  <br>
+            <input type="password" name="pswrd" id="pswrd" value="" /><br><br>
+            <input type="button" value="Передача данных" onclick="f_employers_1()" />
+            <br><br>
+            <input type="checkbox" onclick="f_employers_0()">  <label> Показывать пароль </label> <br>
+        </form>
+        <p id="error" style="line-height:25px;font:400  1.1rem calibri"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</p>
+    </div>
+
+</div>
+
+<script>
+                                                                                                                                          //Обработка формы
+    function f_employers_0() {
+        let tp = document.getElementById("pswrd").getAttribute("type");
+        if (tp == "password") { document.getElementById("pswrd").setAttribute("type", "text"); }
+        else { document.getElementById("pswrd").setAttribute("type", "password"); }
+    }
+    let login = "0";
+    let pswrd = "0";
+    let msg = "";
+    let ind = "-1";
+    async function f_employers_1() {
+        login = document.getElementById("login").value;
+        pswrd = document.getElementById("pswrd").value;
+        if (login == "" || pswrd == "") {      msg = "Не все поля формы заполнены. <br>";
+                                                                  document.getElementById("error").innerText = msg;
+            return;
+        }
+        let params = {};                                                                                                          // отправка учетных данных на сервер
+        params["login"] = login;
+        params["pswrd"] = pswrd;
+        let json = JSON.stringify(params);                                                                         //        alert(json);
+        let response = await fetch('/employers',      {  method: 'POST',
+                                                                                       headers: { "Content-Type": "application/json" },
+                                                                                        body: json             });
+        msg = await response.text();                                                                                     // alert(login + " " + pswrd + "  " + msg);
+        if (msg == "-1") {   document.getElementById("error").innerText = "Ошибка в задaнии логина или пароля";
+                                        return;
+                                     }
+        ind = msg;                                                                                                                      // получен индекс  работодателя
+        document.getElementById("header3_log").innerHTML = login;
+        document.getElementById("header3_ind").innerHTML = msg;          
+        document.getElementById("content").classList.add("personal_area_hide"); // alert("получен индекс  работодателя\n" + login + " " + pswrd + "  msg= " + msg);
+        MyCustomAlert ( "Вход клиента  " + login + "  в личный кабинет выполнен");
+    }
+    function f_employers_2() {                                                                                                // продолжить как анонимный пользователь
+        document.getElementById("header3_log").innerText = "Anonimus";
+        document.getElementById("content").classList.add("personal_area_hide");
+        document.getElementById('anketa_Empl').classList.add('disabled');
+        document.getElementById('create_vacancy_Empl').classList.add('disabled');
+        document.getElementById('edit_vacancy_Empl').classList.add('disabled');
+        document.getElementById('look_resume_Empl').classList.add('disabled');
+        document.getElementById('search_cand_Empl').classList.add('disabled');
+    }
+</script>
+

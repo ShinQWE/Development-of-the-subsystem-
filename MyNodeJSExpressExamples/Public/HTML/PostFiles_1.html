@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Node.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../css/resume.css" type="text/css" />
+    <script src="../js/Cand_script_resume.js"></script>
+    <script src="../js/Common_script.js"></script>
+</head>
+<body>
+    <h3>HTML/PostFiles_1</h3>
+    <form class="gr" enctype="multipart/form-data" id="form_files">
+        <div>
+            Фото соискателя <input type="text" id="Cand_ID" name="Cand_ID" value="" class="hide_"><br>
+        </div>
+        <div>
+            <input type="text" id="Cand_File_photo" name="Cand_File_photo" onclick="MyCustomConfirm('Удалить файл?', 'photo')" value="Заменить/удалить">
+            <input type="file" id="Cand_File_hidden_photo" name="Cand_File_hidden_photo" accept=".jpg, .jpeg, .png, .gif " class="hide_" value="---- ">
+        </div>
+        <div><a href="javascript:ShowFile('photo') " id='image_left_photo' class='hide_'> ▽ </a></div>
+        <div><img id="image_photo" style="max-height: 200px; max-width: 200px;">      </div>
+
+        <div>Фото документа 1</div>
+        <div>
+            <input type="text" id="Cand_File_0" name="Cand_File_0" onclick="MyCustomConfirm('Удалить файл?', '0')" value="Заменить/удалить">
+            <input type="file" id="Cand_File_hidden_0" name="Cand_File_hidden_0" class="hide_" accept=".jpg, .jpeg, .png, .gif ">
+        </div>
+        <div> <a href="javascript:ShowFile(0) " id='image_left_0' class='hide'> ▽ </a></div>
+        <div> <img id="image_0" style="max-height: 200px; max-width: 200px;" >  </div>
+
+        <div id="INSERT"> </div>
+        <div>
+            <a href="javascript:  AddNewPospositionsFile( )" class="innerRefColor">
+                Добавить новый документ (файл)
+            </a>
+        </div>
+    
+        <div> </div>
+        <div>
+            <br>
+            <a href="javascript: LoadFilesFromServer ()" class="innerRefColor">Загрузить файлы с сервера </a><br>
+            <a href="javascript: SaveGraphFilesOnServer ()" class="innerRefColor">Сохранить файлы на сервере</a><br>
+            <a href="javascript: ShowNameFiles ()" class="innerRefColor">Показать имена файлов</a><br>
+        </div>
+    </form>
+
+   <script>
+       function ShowNameFiles() {
+           alert("'" + document.getElementById("Cand_File_hidden_photo").value + "'\n'" +
+                                                                document.getElementById("Cand_File_hidden_0").value +"'"); }
+function DeleteFile_Function(arg) {
+                document.getElementById("Cand_File_hidden_" + arg).value = "";
+                document.getElementById("image_" + arg).src = '';
+                alert(document.getElementById("Cand_File_hidden_" + arg) );
+            }
+   function LoadFileFromPC(num)
+ {
+     alert ( "LoadFileFromPC: num = " + num); 
+     document.getElementById("Cand_File_hidden_" + num).click();                 // программный щелчок по скрытому полю, alert("LoadFile(" + num + ")");
+     var input = document.getElementById("Cand_File_hidden_" + num);
+     // объект - скрытое поле
+       input.addEventListener('change', function () {                                             // обработчик изменения скрытого поля     
+         alert(1);       
+                var file = input.files[0];                                                                                              /*чтение файла*/
+                var reader = new FileReader();
+                reader.onloadend = function () {                                                                             // по окончании чтения файла выполнить   
+                           // Client_Files[num] = reader.result;
+                           // if (num == Client_Files_index) Client_Files_index++;                                       
+                                     alert("file.Name  " + file.Name + "\ result = \n" + reader.result);
+                                     document.getElementById('image_' + num).src = reader.result;
+                                     document.getElementById('Cand_File_' + num).value = "Document_" + num;
+                                     document.getElementById('image_' + num).classList.remove("hide");
+                             };
+         if (file)  reader.readAsDataURL(file);
+     });
+ }
+ 
+ var GraphNames = "51982_Photo_3.png◤51982_Сертификат_2.png";
+       var N_files = 0;
+ async function LoadFilesFromServer(  )
+ {          var NAMES = GraphNames.split('◤');
+            N_files = NAMES.length;
+            if (N_files > 2)
+                for (var nn = 1; nn < N_files - 2; nn++) AddNewPositionsFile() 
+
+             var url_ = "http://localhost:3000/";
+             for (var i = 0; i < NAMES.length; i++)
+                {   var id_input_selector = "#Cand_File_hidden_photo";
+                     var         id_image_selector = "#image_photo"; 
+                    if (i > 0) { id_input_selector = "#Cand_File_hidden_" + (i - 1);
+                                    id_image_selector = "#image_" + (i - 1);                }
+                    var url__ = url_ + NAMES[i];
+                    var nm = NAMES[i];
+                    await fetch(url__)
+                           .then ( response => response.blob() )
+                           .then ( blob => {     const file = new File([blob], nm ) ;
+                                                         const dataTransfer = new DataTransfer();
+                                                         dataTransfer.items.add(file);
+                                                         document.querySelector(id_input_selector).files = dataTransfer.files;
+                                                       /*  alert ("file :   " + dataTransfer.files[0].name + "  " + dataTransfer.files[0].size + "  " + dataTransfer.files[0].type +
+                                                                    "\nblob :  " + blob + "  " + blob.size + "  " + blob.type + 
+                                                                     "\nvalue = " +   document.querySelector(id_input_selector).value );*/
+                                                        document.querySelector(id_image_selector).src = URL.createObjectURL(blob);
+                                                        });
+                }
+ }
+
+
+
+
+            var Client_Files = new Array(5);
+            var Client_Files_index = 0;
+
+            async function SaveGraphFilesOnServer() {
+                var formData = new FormData();
+                formData.append("cand_id", document.getElementById("Cand_ID").value);
+                const photo = document.querySelectorAll('input[type="file"]');
+                //alert(photo.length);
+                for (var i = 0; i < photo.length; i++)
+                             formData.append("CAND_FILES", photo[i].files[0]);
+                const response1 = await fetch("/upload", {                              //  "/upload"  - это маршрут
+                    method: "POST",
+                    body: formData,
+                });
+                const result1 = await response1.text(); //,.json();
+                //alert(result1);
+                MyCustomAlert(result1);
+                return;
+            }
+
+            async function ReadGraphFilesFromServer() {
+                 var f_name =  "pref_Photo_2.png";
+                var formData = new FormData();
+                formData.append("file_name", f_name);
+                const response = await fetch("/upload__", {   method: "POST",
+                                                                                                      body: formData,  });
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                alert(url);
+                const image = document.getElementById('image_preview_0');
+                image.src = url;
+            }
+
+
+            function MyCustomAlert(str)
+            {  str = str.replace(/\n/g, "<br>");
+                var btn = document.createElement("button");
+                var btn_stl = "position:relative; padding-right: 10px; font: 500 18px calibri; border:3px double #fff; border-radius:10px; background:royalblue; color: #fff;";
+                btn.style = btn_stl;
+                btn.innerHTML = "&nbsp;&nbsp;OK&nbsp;&nbsp;";
+                var popupWnd = document.createElement("div");
+                var stl = "border:3px solid lightblue;  border-radius:25px; min-height:100px; min-width:250px; "
+                    + "padding-left: 20px; padding-right: 10px;padding-top: 10px;padding-bottom: 5px; font: 500 1.1em calibri; color: navy;"
+                    + "box-shadow:  1px 2px 1px #ddd, 2px 3px 1px #ddd";
+                popupWnd.style = stl; 
+                popupWnd.innerHTML = "<div  id='ID_DIV'>" + str + "<br><br>";
+                popupWnd.appendChild(btn);
+                btn.style.left = "70%";
+                btn.addEventListener("click", () => { document.body.removeChild(popupWnd); })
+                popupWnd.style.position = "absolute";
+                popupWnd.style.left = "45%";
+                popupWnd.style.top = 0;
+                popupWnd.style.backgroundColor = '#fff';
+                document.body.appendChild(popupWnd);
+            } 
+            //MyCustomAlert("MyCustomAlert(str)\nMyCustomAlert(str)MyCustomAlert(str)1234567890\nMyCustomAlert(str)MyCustomAlert(str)");
+ </script>
+</body>
+</html>
+
+<!--
+        Загрузка нескольких файлов на сервер
+    https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch
+        https://www.npmjs.com/package/express-form-data
+        https://developer.mozilla.org/ru/docs/Web/API/File_API/Using_files_from_web_applications#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80_%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B0_%D1%84%D0%B0%D0%B9%D0%BB%D0%B0_%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE_%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%BC
+-->

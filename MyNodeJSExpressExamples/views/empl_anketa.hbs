@@ -1,0 +1,153 @@
+<div id="header3">    {{> header3}}        </div>
+<link rel="stylesheet" href="css/resume.css" />
+<script src="js/Empl_script.js"></script>
+
+<div class='grid_out'>
+    <div>
+        <span class="Title">Анкета работодателя</span>
+        <div style="overflow-x: hidden; overflow-y: auto; border: solid thin aliceblue; max-height: 70vh; width: 100%;">
+
+            <div class="outer">
+                <a href="javascript:Empl_f1('frm1')" class="innerTitle">
+                    <span id="frm1_" class="innerTitle_   ">▷</span>&nbsp;&nbsp; Идентификационные и контактные данные
+                </a>        <br>
+                <form method="post" class="gr hide " id="frm1" name="frm1">
+                    <div>Фамилия</div>       <div><input type="text"  name="Empl_Family" id="Empl_Family" value=" " /></div>
+                    <div>Имя</div>                <div> <input type="text" name="Empl_Name"  id="Empl_Name" value=" " /></div>
+                    <div>Отчество</div>        <div><input type="text" name="Empl_SurName" id="Empl_SurName" value=" " /></div>
+                    <div>Адрес эл. почты      </div> <div><input type="text" name="Empl_Email"  id="Empl_Email" value=" " /></div>
+                    <div>Телефон                    </div> <div><input type="text" name="Empl_Phone"  id="Empl_Phone"value=" " /></div>
+                    <div>                           </div> <div><br></div>
+                </form>
+            </div>
+            <div class="outer">
+                <a href="javascript:Empl_f1('frm2')" class="innerTitle">
+                    <span id="frm2_" class="innerTitle_  ">▷</span>&nbsp;&nbsp; Информация о работе
+                </a>        <br>
+                <form  method="post" class="gr hide" id="frm2" name="frm2">
+                    <div>Должность</div>
+                    <div>   <textarea row="2" name="Empl_JobTitle" id="Empl_JobTitle"></textarea>                        </div>
+                    <div>Наименование предприятия</div>
+                    <div>  <textarea row="2" name="Empl_Company" id="Empl_Company"></textarea></div>
+                    <div></div>                                    <div><i>Юридический адрес предприятия</i></div>
+                    <div>Почтовый индекс          </div>       <div><input type="text" name="Empl_CompIndex" id="Empl_CompIndex" value=" " onchange="Dup('Empl_CompIndex')" /></div>
+                    <div>Регион                              </div>     <div><input type="text" name="Empl_Region" id="Empl_Region" value=" " onchange="Dup('Empl_Region')" /></div>
+                    <div>Город<br>(населенный пункт)  </div>     <div><input type="text" name="Empl_City" id="Empl_City" value=" " onchange="Dup('Empl_City')" /></div>
+                    <div>Улица                                 </div>      <div><input type="text" name="Empl_Street" id="Empl_Street" value=" " onchange="Dup('Empl_Street')" /></div>
+                    <div>Дом/строение, <br>№ офиса (кв.)                </div>      <div><input type="text" name="Empl_Build" id="Empl_Build" value=" " onchange="Dup('Empl_Build')" /></div>
+                    <div>                                              </div> <div><br></div>
+                    <div></div>                                  <div><i>Почтовый адрес  предприятия</i></div>
+                    <div>Почтовый индекс            </div>       <div><input type="text" name="Empl_CompIndex1" id="Empl_CompIndex1" value=" " /></div>
+                    <div>№ абонентского ящка   </div>       <div><input type="text" name="Empl_Box" id="Empl_Box"  value="Отсутствует" /></div>
+                    <div>Регион                   </div>     <div><input type="text" name="Empl_Region1" id="Empl_Region1" value=" " /></div>
+                    <div>Город(населенный пункт)    </div>     <div><input type="text" name="Empl_City1" id="Empl_City1" value=" " /></div>
+                    <div>Улица                                     </div>      <div><input type="text" name="Empl_Street1" id="Empl_Street1" value=" " /></div>
+                    <div>Дом/строение, № офиса (кв.)   </div>      <div><input type="text" name="Empl_Build1" id="Empl_Build1" value=" " /></div>
+                    <div>                                               </div> <div><br></div>
+                    <div>Телефон                               </div>      <div><input type="text" name="Empl_CompAPhone" id="Empl_CompAPhone"value=" " /></div>
+                    <div>Сайт предприятия            </div>       <div><input type="text" name="Empl_Site" id="Empl_Site" value="" /></div>
+                    <div>                                                </div> <div><br></div>
+                     <div> Дополнительная информация<br>о предприятиии </div>   
+                                                              <div><textarea row="4" name="Empl_AuxInfo" id="Empl_AuxInfo" value=" "  rows="5"></textarea></div>
+                </form>
+            </div>
+            <div class="outer">
+                <a href="javascript:Empl_f1('frm3')" class="innerTitle">
+                    <span id="frm3_" class="innerTitle_ ">▷</span>&nbsp;&nbsp; Даты создания и последней редакции
+                </a>              <br>
+                <form method="post"  class="gr hide" id="frm3" name="frm3">
+                    <div></div>
+                    <div>
+                        <input type="date" class="shortDate" name="Empl_Date5" id="Empl_Date5" disabled />  &nbsp;-&nbsp;
+                        <input type="date" class="shortDate" name="Empl_Date6" id="Empl_Date6"disabled />
+                    </div>
+                    <div>                           </div> <div><br></div>
+                </form>
+            </div>
+        </div>
+        <div class="outer1">
+            <a href="javascript: SaveAnketa()" style="padding-left:70px">  Сохранить данные  </a>
+        </div>
+    </div>
+
+    <div>
+        <span class="Title">  Справка по заполнению анкеты </span><br>
+        <a href="javascript:Empl_f1('pp1')" class="innerTitle">
+            <span id="pp1_" class="innerTitle">◤</span>&nbsp;&nbsp; Показать / скрыть
+        </a>
+        <div class="note_border">
+            <div id="pp1" style="width:98%">текст справки</div>
+        </div>
+    </div>
+</div>
+<br>
+<div style="display:none">
+    <span id="anketa">{{ANKETA}}</span>
+    <span id="empl_id">{{INDEX}}</span>
+    <span id="empl_login">{{LOGIN}}</span>
+</div>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
+<script>
+    function Dup(id) {
+        var txt_ = document.getElementById(id).value;
+        document.getElementById(id + "1").value = txt_;
+    }
+   async  function SaveAnketa()
+    {   var ank_data = "";
+        for (var i = 1; i < 4; i++) {
+            var frm = new FormData(document.getElementById('frm' + i));
+            for (let [key, value] of frm)
+            {   value = value.replace(/\"/g, "&quot;");         //                if (key == "Empl_Company")alert (value);
+                if (key.includes("Empl_")) ank_data += key + "▷" + value + "◤" + "\n";
+            }
+        }
+       // alert(ank_data);
+        document.getElementById("Empl_Date6").valueAsDate = new Date();
+        var object__ = {};
+       object__["empl_id"] = document.getElementById("empl_id").innerText;
+        object__["ank_data"] = ank_data;
+     //  return;
+        var json__ = JSON.stringify(object__);                      //  преобразование в json объект     
+        var res0 = "Передача данных на сервер. Размер данных = " + ank_data.length + "\n";
+        let response__ = await fetch('/empl_anketa_data', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json; charset=UTF-8" },
+            body: json__
+        });
+        let result = await response__.text();    MyCustomAlert(res0 + result);
+    }
+
+    var client_login, client_ind;
+    window.onload = function ()
+    {   client_login = document.getElementById("empl_login").innerText;
+        client_ind = document.getElementById("empl_id").innerText;
+        document.getElementById("header3_log").innerText = client_login;
+        document.getElementById("header3_ind").innerText = client_ind;
+        FillAnketa();
+    }
+   function FillAnketa()
+   {    const ank = document.getElementById("anketa").innerHTML;
+      //  alert(ank);
+        if (ank == null || ank == "") document.getElementById("Empl_Date5").valueAsDate = new Date();
+        var itemsMenu =ank.split("◤");
+        var N = itemsMenu.length;                                            //  alert("N=" + N +  "\n" +ank);
+        for (var i = 0; i < N - 1; i++) {
+            var item = itemsMenu[i].split("▷");
+            var id = (item[0]).trimStart();                                         // идентификатор элемента анкеты  
+            var val = item[1];
+            val = val.replace(/&quot;/g, "\"");
+            if (val === '') val = '-';
+            console.log("'" + id + "'   -    '" + val + "'");
+           var tagName = document.getElementById(id).tagName;
+            document.getElementById(id).value = val;
+       }
+       document.getElementById("Empl_Date6").valueAsDate = new Date();
+
+
+                                                                                      // alert (document.getElementById("Cand_Date6"));
+   }
+
+
+ ///////////////////////////////Чтение и заполнение справки////////////////////////////////////////////////////////// 
+    Empl_NodeText().then((data) => document.getElementById('pp1').innerHTML = data);
+</script>

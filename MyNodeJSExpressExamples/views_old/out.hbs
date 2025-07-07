@@ -1,0 +1,21 @@
+  <script>
+async function f1()
+{     var reply = confirm("Подтвердите выход из приложения");
+       if (!reply) return;    
+    var obj = document.getElementById("menuMain_1"); obj.classList.add("aNotUsing", "disabled");
+          obj = document.getElementById("menuMain_2"); obj.classList.add("aNotUsing", "disabled");
+          obj = document.getElementById("menuMain_3"); obj.classList.add("aNotUsing", "disabled");
+    document.location.href = "http://google.ru"; 
+    var  response = await fetch("/out", {  method: "POST", headers: { "Content-Type": "application/json" } });
+    document.getElementById("reply").innerHTML = "Приложение закрывается";
+    setTimeout (f2, 2000);
+}
+function f2()
+{ document.location.href = "http://google.ru";
+}
+f1(); 
+ </script>
+<br><br><br><br>
+ <div id="reply"  class="lastMsg"></div>
+    
+

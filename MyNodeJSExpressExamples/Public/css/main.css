@@ -1,0 +1,10 @@
+body {
+    font: 400 1em Calicri;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+footer {    position: fixed;  height:4vh;   left: 0;    bottom: 0; /* Фиксированное положение,  Левый нижний угол */
+                    background: #ccc;    color: #227e;    width: 100%;  padding-left: 3vw;  padding-top:3px;
+}
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>        Stat  BLOB</title>
+    <meta charset="utf-8" />
+    <style>
+        a.disabled {            pointer-events: none; /* делаем элемент неактивным для взаимодействия */
+            cursor: default; /*  курсор в виде стрелки */
+            color: #888; /* цвет текста серый */
+        }
+
+        .modal {            display: none;            position: relative;            z-index: 1;            left: 25vw;            top: 20vh;            width: 600px;
+            height: 400px;            overflow: auto;            border: 2px solid #ccc;        }
+
+        .modal-content { /* some rules */        }
+                .close { /* some rules */
+        }
+        #BOX {
+            display: flex;
+            flex-wrap: wrap
+        }
+
+        img {
+            width: 300px;
+            padding: 10px
+        }
+     </style>
+
+
+</head>
+
+<body>
+
+    <div id='BOX'></div>
+    <input id='FI' type='file' multiple>
+
+    <h4>Статический файл</h4>
+    <a href="/" class="aNotUsing" disabled> Создать/удалить вакансию</a>
+    <input type="text" placeholder="Адрес" disabled />
+    <input type="text" placeholder="Почтовый индекс" disabled />
+    <a href="Адрес ссылки" class="disabled">Анкор</a>
+
+    <button id="openModal">Нажми меня!</button>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close">close</button>
+            <img src="CEFR.png" width="1200" height="350">
+        </div>
+    </div>
+
+
+    <script>
+        function getBlobFromSrc(e) {
+            let img = e.target, strBlob = e.target.src;
+            console.log(strBlob);
+            fetch(strBlob)
+                .then(i => i.blob())
+                .then(i => console.log(i)) // -> blob
+        };
+        function Store(blob) {
+            console.log(blob);
+            let img = new Image;
+            img.src = URL.createObjectURL(blob);
+            img.addEventListener('click', getBlobFromSrc);
+            BOX.append(img);
+        };
+
+        FI.onchange = e => {
+            let i, n = e.target.files, r;
+            for (i of n) {
+                r = new FileReader;
+                r.readAsDataURL(i);
+                r.onload = e => fetch(e.target.result)
+                    .then(i => i.blob())
+                    .then(i => Store(i))
+            }
+        };
+    </script>
+
+    <script>
+        const modal = document.querySelector('#modal');
+        const btn = document.querySelector('#openModal');
+        const close = document.querySelector('.close');
+
+        btn.onclick = function () {
+            modal.style.display = 'block';
+        };
+
+        close.onclick = function () {
+            modal.style.display = 'none';
+        };
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>

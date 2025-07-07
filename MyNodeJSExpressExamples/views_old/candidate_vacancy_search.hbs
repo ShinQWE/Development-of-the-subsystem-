@@ -1,0 +1,13 @@
+ <h4>{{title1}}</h4>
+
+<span id="LOGIN" style="display:none">    {{LOGIN}}</span>
+
+<script>
+    var client_login = document.getElementById("LOGIN").innerText;
+    document.getElementById("user_id").innerText = "Клиент: " + client_login;
+
+    f1_cand();                               //  получить меню 2-го уровня
+    f4_cand_menuWorking();
+    f2_cand_select("lookFor_Cand");
+
+   </script>

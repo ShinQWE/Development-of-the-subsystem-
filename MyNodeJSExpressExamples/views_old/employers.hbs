@@ -1,0 +1,38 @@
+<h5>{{title}} </h5>
+
+<span id="LOG" style="display:none">    {{login}}</span>
+<script>
+    function f1_empl() {
+       
+var
+        obj = document.getElementById("menuMain_2"); obj.classList.remove("aNotChoosed", "disabled"); obj.classList.add("aChoosed");
+        obj = document.getElementById("menuMain_1"); obj.classList.remove("aChoosed"); obj.classList.add("aNotChoosed", "disabled");
+        obj = document.getElementById("menuMain_3"); obj.classList.remove("aChoosed"); obj.classList.add("aNotChoosed", "disabled");
+        document.getElementById("menuEmpl_").classList.remove("notDisplayed");
+        document.getElementById("menuCand_").classList.add("notDisplayed");
+        document.getElementById("menuMod_").classList.add("notDisplayed");
+        document.getElementById("menuHelp_").classList.add("notDisplayed");
+        alert(" Выбор меню 2-го уровня - EMPLOIERS");
+    }
+    function f3_empl() {
+        var a = document.querySelector("h5").innerText;
+        var b = 'вход выполнен';
+        var b1 = 'Вход выполнен';
+        console.log("a= " + a + "   b= " + b);
+        if (a.includes(b) || a.includes(b1)) 
+         {   f4_empl_menuWorking()
+              var client_login = document.getElementById("LOG").innerText; 
+              document.getElementById("user_id").innerText = "Клиент: " + client_login;
+        }
+}
+function f4_empl_menuWorking()
+{            document.getElementById("input_Empl").classList.add("disabled");
+            document.getElementById("anketa_Empl").classList.remove("disabled");
+            document.getElementById("createVac_Empl").classList.remove("disabled");
+            document.getElementById("delVac_Empl").classList.remove("disabled");
+            document.getElementById("loolCand_Empl").classList.remove("disabled");
+}
+
+    f1_empl();
+    f3_empl();
+</script>

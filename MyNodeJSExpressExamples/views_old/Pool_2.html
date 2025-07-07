@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div  id="res"> </div>
+
+<script>
+var div=document.querySelector('div');
+var id=0;
+function f1 ()
+{
+    alert('f1'); 
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST',   'http://192.168.0.101:8888/candidate_account' );      		// отправка запроса
+       xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+						// формирование заголовка
+    xhr.send('login=dzea1@yandex.ru&password=222789789789798');                                                   // отправка тела запроса (параметр запроса)
+        xhr.onreadystatechange=function ()		 // обработка полученного ответа
+        {     if (xhr.readyState==4 && xhr.status==200)
+        {
+            var an = xhr.responseText;                            //текст ответа сервера
+            
+                      take(an);                               	  // использование  ответа сервера. 
+                             // Функция  take()  выполняет некоторую   обработку,     
+        }				  	  //например,  отображает текст ответ   
+      }
+ }  
+var  n = 0;
+function take(an) 
+{
+    alert(an);
+    //an = an.replace(/</g, '&lt;');
+    an = an.replace(/.+<body>/, '');
+    an = an.replace(/<\/body>.+/, '');
+
+    document.getElementById('res').innerHTML += an.toString() ;
+    n++;
+    }
+    f1();
+//if (n<10) setInterval (sendxhr, 1000);		    		 // запуск частых запросов
+</script>
+</body>
+</html>

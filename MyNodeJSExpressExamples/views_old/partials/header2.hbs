@@ -1,0 +1,16 @@
+<style>
+    .header2_div1 {     display: grid;        grid-template-columns: 35px 350px auto 60px 200px 40px;        grid-template-rows: 35px;
+                    line-height: 25px;     font: 400 16px Calibri;         color: #345;        background-color: #eee;        border: 1px solid #ddd;                       }
+</style>
+<div class="header2_div1">
+    <div>   <img src="fav_48.ico" width="35" height="35"> </div>
+    <div style="text-align:center">  Личный кабинет соискателя    </div>
+    <div>  </div>
+    <div>  Логин  </div>
+    <div id="header2_log"> {{LOGIN}} </div>
+    <div id="header2_ind"> {{IND}} </div>
+</div>
+<div id="menu">
+    {{> menuCand}}
+</div>
+

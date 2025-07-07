@@ -1,0 +1,91 @@
+<link rel="stylesheet" href="css/resume.css" />
+<script src="js/Empl_script.js"></script>
+
+<div class='grid_out'>
+    <div>
+        <span class="Title">Анкета работодателя</span>
+        <div style="overflow-x: hidden; overflow-y: auto; border: solid thin aliceblue; max-height: 70vh; width: 100%;">
+
+            <div class="outer">
+                <a href="javascript:Empl_f1('frm1')" class="innerTitle">
+                    <span id="frm1_" class="innerTitle_   ">▷</span>&nbsp;&nbsp; Идентификационные и контактные данные
+                </a>        <br>
+                <div class="gr hide " id="frm1">
+                    <div>Фамилия</div>               <div><input type="text" name="Empl_Family" value=" " /></div>
+                    <div>Имя</div>                         <div> <input type="text" name="Empl_Name" value=" " /></div>
+                    <div>Отчество</div>               <div><input type="text" name="Empl_SurName" value=" " /></div>
+                    <div>Адрес эл. почты            </div> <div><input type="text" name="Empl_Email" value=" " /></div>
+                    <div>Телефон                            </div> <div><input type="text" name="Empl_Phone" value=" " /></div>
+                    <div>                           </div> <div><br></div>
+                </div>
+            </div>
+            <div class="outer">
+                <a href="javascript:Empl_f1('frm2')" class="innerTitle">
+                    <span id="frm2_" class="innerTitle_  ">▷</span>&nbsp;&nbsp; Информация о работе
+                </a>        <br>
+                <div class="gr hide" id="frm2">
+                    <div>Должность</div>
+                    <div>   <textarea row="2" name="Empl_JobTitle" id="Empl_JobTitle"></textarea>                        </div>
+                    <div>Наименование предприятия</div>
+                    <div>  <textarea row="2" name="Empl_Company" id=""></textarea></div>
+                    <div></div>                                    <div><i>Юридический адрес предприятия</i></div>
+                    <div>Почтовый индекс          </div>       <div><input type="text" name="Empl_CompIndex" value=" " /></div>
+                    <div>Регион, район                    </div>     <div><input type="text" name="Empl_Region" value=" " /></div>
+                    <div>Город                                  </div>     <div><input type="text" name="Empl_City" value=" " /></div>
+                    <div>Улица                                 </div>      <div><input type="text" name="Empl_Street" value=" " /></div>
+                    <div>Дом/строение                </div>      <div><input type="text" name="Empl_Build" value=" " /></div>
+                    <div>Этаж, № офиса                       </div>      <div><input type="text" name="Empl_Office" value=" " /></div>
+                    <div>                                              </div> <div><br></div>
+                    <div></div>                                  <div><i>Почтовый адрес  предприятия</i></div>
+                    <div>Почтовый индекс            </div>       <div><input type="text" name="Empl_CompIndex1" value=" " /></div>
+                    <div>№ абонентского ящка   </div>       <div><input type="text" name="Empl_Box" value="Отсутствует" /></div>
+                    <div>Регион, район                   </div>     <div><input type="text" name="Empl_Region1" value=" " /></div>
+                    <div>Населенный пункт           </div>     <div><input type="text" name="Empl_City1" value=" " /></div>
+                    <div>Улица                                     </div>      <div><input type="text" name="Empl_Street1" value=" " /></div>
+                    <div>Дом/строение                    </div>      <div><input type="text" name="Empl_Build1" value=" " /></div>
+                    <div>№ квартиры/офиса          </div> <div><input type="text" name="Empl_Office1" value=" " /></div>
+                    <div>                                               </div> <div><br></div>
+                    <div>Телефон                               </div>      <div><input type="text" name="Empl_CompAPhone" value=" " /></div>
+                    <div>Сайт предприятия            </div>       <div><input type="url" name="Empl_Site" value=" " /></div>
+                    <div>                                                </div> <div><br></div>
+                </div>
+            </div>
+            <div class="outer">
+                <a href="javascript:Empl_f1('frm9')" class="innerTitle">
+                    <span id="frm9_" class="innerTitle_ ">▷</span>&nbsp;&nbsp; Даты создания и последней редакции
+                </a>              <br>
+                <div class="gr hide" id="frm9">
+                    <div></div>
+                    <div>
+                        <input type="date" class="shortDate" name="Cand_Date5" disabled />  &nbsp;-&nbsp;
+                        <input type="date" class="shortDate" name="Cand_Date6" disabled />
+                    </div>
+                    <div>                           </div> <div><br></div>
+                </div>
+            </div>
+        </div>
+        <div class="outer1">
+            <a href="javascript: SaveData()" style="padding-left:70px">  Сохранить данные   </a>
+        </div>
+    </div>
+
+    <div>
+        <span class="Title">  Справка по заполнению анкеты </span><br>
+        <a href="javascript:Empl_f1('pp1')" class="innerTitle">
+            <span id="pp1_" class="innerTitle">◤</span>&nbsp;&nbsp; Показать / скрыть
+        </a>
+        <div class="note_border">
+            <div id="pp1" style="width:98%">текст справки</div>
+        </div>
+    </div>
+</div>
+<br>
+<!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
+<script>
+
+    f1_Empl_menu2();                                                          //  получить меню 2-го уровня
+    f4_empl_menuWorking();
+    f2_empl_select("anketa_Empl");                                     // выделить  пункт  'Анкета'  меню 2-го уровня
+
+       Empl_NodeText().then((data) => document.getElementById('pp1').innerHTML = data );
+    </script>

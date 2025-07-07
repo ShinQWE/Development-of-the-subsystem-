@@ -1,0 +1,280 @@
+<div id="header3">    {{> header3}}        </div>
+<style>
+    .Title {        font: 500 1.4em Verdana;        color: saddlebrown;        line-height: 35px;        padding-left: 35px    }
+    .innerTitle_1 {        font: 500 1.3em Calibri;        color: saddlebrown;       line-height: 30px;        padding-left: 5%    }
+    .innerTitle {        font: 500 1.2em Calibri;        color: darkblue;        line-height: 30px;        padding-left: 5%    }
+        .grid_out_1 {        display: grid;        grid-template-columns: 13% 43% 44%;    }
+    .gr1 {        display: grid;        grid-template-columns: 25% 75%;        font: 400 1.0em Calibri;        color: navy;        grid-row-gap: 2px;    }
+   .gr2 {        display: grid;        grid-template-columns: 35% 65%;        font: 400 1.0em Calibri;        color: navy;        grid-row-gap: 6px;        grid-column-gap: 6px;
+        background: #fafaea;        padding: 8px    }
+    textarea, input {        max-width: 315px;        min-width: 250px;        border-radius: 10px;        border-color: #d7f0fc;        box-sizing: border-box;        background: white;    }
+    textarea {        width: 95%; font-size:1.1em    }
+   .gr3 {        display: grid;        grid-template-columns: 35% 65%;        font: 400 1.0em Calibri;        color: navy;        grid-row-gap: 1px;        padding: 2%    }
+    .selected {        font: 400 1.21em Calibri;        color: darkmagenta    }
+    .unselected {        font: 400 1.05em Calibri;       color: #025ff0    }
+     .title2 {        line-height: 0.9em    }
+      #li_0, #li_1 {        font-style: italic;        padding-left: 1.0em;    }
+    .innerRefColor {        font: 400 1.25em Calibri;        color: #025ff0    }
+    #Empl_Reply:focus {        outline: none !important;        border-color: #025ff0    }
+    .hide {        display: none    }
+    .list {        font: 600  1em Calibri; font-style:italic    }
+</style>
+
+<script src="js/Cand_script_resume.js"></script>
+
+<span class="Title"> История подбора персонала </span>
+<br>
+<br>
+
+<div class='grid_out_1'>
+
+    <div>
+        <br>          <span class="list"> Входящие</span>        <div id='list_id'>        </div>
+        <br><br>   <span class="list"> Исходящие</span>     <div id='list_id_'>       </div>
+
+    </div>
+
+    <div style="border: solid thin aliceblue;  width: 100%;">
+        <span class='innerTitle' id=" id_tlt_1">Сообщение № <br></span> <br>
+        <form class="gr1" id="frm1" name="frm1">
+            <div>Дата</div>       <div style="box-sizing: "><input type="text" id="DT" value=" " disabled style="background:white" />  </div>
+            <div>От кого</div>   <div> <input type="text" id="Sender_Login" value="" disabled style="background:white" ; /> </div>
+            <div class="title2">Краткое <br>сообщение</div>  <div><textarea id="Add_Msg" rows='8' value=" " disabled></textarea> <br> </div>
+        </form>
+
+        <div class="innerTitle">  <a href="javascript:f_ShowHide('res_brief')" style="color:blue">◤ Резюме (краткая форма ). Показать/скрыть</a> </div>
+        <div id="res_brief" class="gr2  hide">
+            <div style="width:100px; height:100px">
+                <img alt="Фото соискателя" id="photo_from" width="100" height="100">
+            </div>
+            <div class="gr2">
+                <div>ФИО</div>   <div id="fio_from"> </div>
+                <div class="title2">Контактные <br>данные</div>     <div id="contact_from"> </div>
+            </div>
+
+            <div class="title2">Учебное заведение<br>Специализация</div> <div id="edu_resume"> </div>
+            <div class="title2">Стаж работы по <br>специальности </div>      <div id="experience_resume">   </div>
+            <div class="title2">Уровень владения ПК  </div>                                <div id="PC_skill_resume"> Отсутствует</div>
+            <div class="title2">Иностранный язык</div>                                      <div id="lang_lev_resume"> Английский, уровень A1(начальный)</div>
+            <div class="title2">Сопроводительное письмо</div>                       <div id="ref_letter_resume">
+                <a href="javascript:ShowPopup('res_brief', 'Cand_AddLetter')"> Открыть</a>
+            </div>
+        </div>
+
+        <br>
+        <form class="gr1" id="frm2" name="frm2">
+            <div class="title2">Ответ<br>соискателю</div>      <div><textarea id="Empl_Reply" rows='8' value=" "></textarea> <br> </div>
+        </form>
+        <br>
+        <div>
+            <a href="javascript: AnswerCand ()" style="padding-left: 70px;" class="innerRefColor">  Ответить </a><br>
+            <a href="javascript: AnswerCand ()" style="padding-left: 70px;" class="innerRefColor">  Отметить как просмотренное </a><br>
+        </div>
+    </div>
+
+    <div>
+        <a class="innerTitle" href="javascript:f_ShowHide('res_full')" style="color: #025ff0">  ◤&nbsp;Резюме соискателя.  Показать / скрыть  </a>
+        <div id="res_full"  class="hide" style="overflow-x: auto; overflow-y: auto; border: solid thin aliceblue; max-height: 75vh; width: 100%; margin-left: 6px;  background: #fafaf0;">
+            <div>
+                <span class="innerTitle  title2">&nbsp;&nbsp; Идентификационные и контактные данные</span>
+                <form class="gr3">
+                    <div>Фамилия</div>               <div><input type="text" id="Cand_Family" value="" disabled /></div>
+                    <div>Имя</div>                         <div><input type="text" id="Cand_Name" value="" disabled /></div>
+                    <div>Отчество</div>               <div><input type="text" id="Cand_SurName" value="" disabled /></div>
+                    <div>Пол (М / Ж)</div>          <div><input type="text" id="Cand_Gender" value="" disabled /></div>
+                    <div>Дата рождения    </div><div><input type="text" id="Cand_Birthday" disabled /></div>
+                    <div>Адрес эл. почты  </div> <div><input type="text" id="Cand_Email" value="" disabled /></div>
+                    <div>Телефон  </div>               <div><input type="text" id="Cand_Phone" value="" disabled /></div>
+                </form>
+            </div>
+
+            <div>
+                <span class="innerTitle title2">&nbsp;&nbsp; Данные об основном образовании</span>
+                <form class="gr3 ">
+                    <div>Вуз</div>
+                    <div> <input type="text" id="Cand_Institute" value="МГУ им. адм. Невельского Г.И." disabled />                    </div>
+                    <div>Курс (1 - 6)</div>  <div><input type="text" id="Cand_Year" value="" disabled /></div>
+                    <div>Факультет</div>   <div><textarea row="2" id="Cand_Faculty" value="" disabled  >  </textarea> </div>
+                    <div>Специализация</div>  <div><textarea row="2" id="Cand_Specialization" disabled></textarea>          </div>
+                    <div>Уровень образования</div> <div>    <input type="text" id="Cand_Level" value="" disabled />     </div>
+                    <div>Год поступления/окончания</div>  <div>   <input type="text" id="Cand_Date1_2" value="" disabled />   </div>
+                </form>
+            </div>
+
+            <div>
+                <span class="innerTitle title2">&nbsp;&nbsp; Данные о дополнительном образовании</span>
+                <form class="gr3">
+                    <div>Вуз</div>   <div><input type="text" id="Cand_Institute__" value="" disabled /></div>
+                    <div>Период обучения</div> <div>  <input type="text" id="Cand_Date1__2__" value="" disabled />   </div>
+                    <div>Специализация</div>
+                    <div><textarea rows="2" id="Cand_Specialization_Add" disabled></textarea></div>
+                </form>
+            </div>
+
+            <div>
+                <span id="frm4_" class="innerTitle">&nbsp;&nbsp; Данные о дополнительной подготовке</span>
+                <form class="gr3">
+                    <div>Навык работы с ПК </div>    <div> <input type="text" id="Cand_Skill" value="" disabled />  </div>
+                    <div>Владение специали-зированным ПО</div>
+                    <div>   <textarea rows="2" name="Cand_Soft" id="Cand_Soft"></textarea> </div>
+                    <div>Знание иностранных языков </div>  <div><input type="text" id="Cand_Lang" value="" disabled /></div>
+                    <div>Уровень владения</div>                     <div> <input type="text" id="Cand_Lang_Level" value="" disabled /> </div>
+                    <div>Дополнительные навыки</div>
+                    <div><textarea rows="2" cols="40" id="Cand_AuxSkill" value="" disabled></textarea></div>
+                </form>
+            </div>
+
+            <div>
+                <span id="frm5_" class="innerTitle">&nbsp;&nbsp; Дополнительные сведения</span>
+                <form class="gr3" id="frm5">
+                    <div>Область интересов</div>
+                    <div><textarea rows="2" cols="40" id="Cand_Interest" value="" disabled></textarea></div>
+                    <div> Сопроводительное письмо</div>   <div><a href="javascript:ShowAddLetter()">Открыть/скрыть </a> <article id="Cand_AddLetter"  class="hide" value=""></article>    </div>
+                    <div> Фото соискателя </div> <div>
+                        <a href="javascript:ShowDoc('Photo')">Открыть/скрыть </a><br>
+                        <img id="IMG_0" src="" width="200" height="200" class="hide" />
+                    </div>
+                    <div id="Ph1" class="hide"> Фото документа 1 </div> <div id="Ph1_" class="hide"> <a href="javascript:ShowDoc(1)">Открыть/скрыть </a><br>
+                                                                                       <img id="IMG_1"  src="" width="350" height="350" class="hide" /> </div>
+                    <div  id="Ph2"class="hide"> Фото документа 2 </div> <div  id="Ph2_" class="hide"> <a href="javascript:ShowDoc(2)">Открыть/скрыть </a><br>
+                                                                                       <img  id="IMG_2"src="" width="500" height="500" class="hide" /> </div>
+                    <div  id="Ph3"class="hide"> Фото документа 3 </div> <div  id="Ph3_" class="hide"> <a href="javascript:ShowDoc(3)">Открыть/скрыть </a><br>
+                                                                                       <img  id="IMG_3"src="" width="500" height="500" class="hide" /> </div>
+                    <div  id="Ph4"class="hide"> Фото документа 4 </div> <div  id="Ph4_" class="hide"> <a href="javascript:ShowDoc(4)">Открыть/скрыть </a><br>
+                                                                                       <img  id="IMG_4"src="" width="500" height="500" class="hide" /> </div>
+                </form>
+            </div>
+
+            <div>
+                <span id="frm6_" class="innerTitle">&nbsp;&nbsp; Данные о последнем месте работы по специальности</span>
+                <form class="gr3" id="frm6">
+                    <div>Предприятие </div>   <div><input type="text" id="Cand_Company" value="" disabled /></div>
+                    <div>Должность </div>   <div><input type="text" id="Cand_Job" value="" disabled /></div>
+                    <div>Регион </div>   <div><input type="text" id="Cand_Region" value="" disabled /></div>
+                    <div>Город </div>   <div><input type="text" id="Cand_City" value="" disabled /></div>
+                    <div>Дата приема /увольнения</div> <div>  <input type="text" id="Cand_Date3_4" value="" disabled /> </div>
+                </form>
+            </div>
+            <div>
+                <span id="frm7_" class="innerTitle">&nbsp;&nbsp; Деловые и личностные качества</span>
+                <form class="gr3 ">
+                    <div> </div>  <div> <span  id="Cand_Chars" disabled></span>                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<article class="hide"><span id="id_msg"> {{MSG}} </span><span id="id_main_doc" > {{MAIN_DOC}}</span><span id="id_N_msg"> {{N_MSGS}} </span>
+</article>
+<script>
+    var N = 0;                                                                                                                               // число сообщений
+    function f_ShowHide(id) {
+        document.getElementById(id).clacsslist.toggle('hide');
+    }
+        async function f_click(i) {
+        document.getElementById(' id_tlt_1').innerText = "Сообщение " + (i + 1);
+        var t = document.getElementById('li_' + i).classList.contains('unselected');
+        if (t) {
+            document.getElementById('li_' + i).classList.add("selected");
+            document.getElementById('li_' + i).classList.remove("unselected");
+            var id_user = document.getElementById("header3_ind").innerHTML;
+            var q = document.getElementById(' id_tlt_1').innerText = "Сообщение " + (i + 1);                //         alert(q);
+            var response = await fetch("/empl_history_look_resume?" + id_user + "&" + (i + 1));
+            var res = await response.text();                                                                                                    // alert(res);
+            document.getElementById("id_main_doc").innerHTML = res;
+            STR = res.split('◤');
+            N_STR = STR.length;
+
+            Fill_Resume();
+            Fill_BriefResume();
+        }
+        else {
+            document.getElementById('li_' + i).classList.remove("selected");
+            document.getElementById('li_' + i).classList.add("unselected");
+        }
+    }
+    var STR = [];
+    var N_STR;
+    var ADD_MSG, DATE,  FROM,  PREFIX, NGF ;
+    function Fill_Resume() {
+        var ID_DATE = ["Cand_Date1_2", "Cand_Date1__2__", "Cand_Date3_4"];
+        var Q = ["Обучаемость", "Адаптация к информационным системам", "Умение работать с большим количеством информации",
+            "Умение работать в команде", "Инициативность", "Стремление к повышению профессионального уровня",
+            "Исполнительность, ответственность", "Самостоятельность", "Коммуникабельность,  уравновешенность, вежливость",
+            "Принципиальность"];
+        console.log(N_STR);
+        var ind_date = 0;
+        var i = 0;
+        for (i = 0; i < N_STR; i++) {
+            var str = STR[i].split('▷');
+            console.log(str);
+            var id = str[0].trim();
+            if (id == "Cand_Keys") break;
+            var value = str[1];
+            if (id.includes("Cand_Date")) { i++; value += " -  " + (STR[i].split('▷'))[1]; id = ID_DATE[ind_date]; ind_date++; }
+            if (id.includes("Cand_q")) { var ind = Number(str[1].trim()); document.getElementById("Cand_Chars").innerHTML += Q[ind] + "<br>"; continue; }
+            if (id == "Cand_AddLetter") {    var value = "<p>" + value.replace(/\n/g, "</p > <p>") + "</p>";
+                document.getElementById(id).innerHTML = value;
+                document.getElementById(id).value = value; continue;
+                                                            }
+            else { document.getElementById(id).value = value; }
+        }
+        ADD_MSG = (STR[N_STR - 5].split('▷'))[1];
+        DATE = (STR[N_STR - 4].split('▷'))[1];
+        FROM = (STR[N_STR - 3].split('▷'))[1];
+        PREFIX = (STR[N_STR - 2].split('▷'))[1];
+        NGF = (STR[N_STR - 1].split('▷'))[1];
+//        alert(ADD_MSG + '\n' + DATE + '\n' + FROM + '\n' + PREFIX + '\n' + NGF);
+        for (var i = 1;   i < Number(NGF)+1;  i++) {
+            console.log(i + "  " + (Number(NGF) + 1)  );
+            document.getElementById("Ph" + i).classList.remove("hide");
+            document.getElementById("Ph" + i + "_").classList.remove("hide");
+            document.getElementById("IMG_" + i).src = PREFIX + "_Doc_" + i;
+        }
+        document.getElementById("IMG_0").src = PREFIX + "_Photo";
+    }
+
+    function ShowAddLetter()
+    {   document.getElementById("Cand_AddLetter").classList.toggle("hide");
+    }
+    function ShowDoc(id_Doc)
+    {   document.getElementById( "IMG_"+ id_Doc).classList.toggle("hide");
+    }
+
+ function Fill_BriefResume() {
+     document.getElementById("DT").value = DATE;
+     document.getElementById("Sender_Login").value = FROM;
+     document.getElementById("Add_Msg").innerHTML = ADD_MSG;
+     document.getElementById("fio_from").innerHTML = document.getElementById("Cand_Family").value + " " +
+                                                           document.getElementById("Cand_Name").value + "  " + document.getElementById("Cand_SurName").value;
+     document.getElementById("contact_from").innerHTML = document.getElementById("Cand_Email").value + "<br>" +
+                                                                                                          document.getElementById("Cand_Phone").value;
+     document.getElementById("edu_resume").innerHTML =  document.getElementById("Cand_Institute").value + "<br>" +
+                                                                                                        document.getElementById("Cand_Faculty").value + "<br>" +
+                                                                                                        document.getElementById("Cand_Specialization").value;
+     document.getElementById("experience_resume").innerHTML = document.getElementById("Cand_Date3_4").value;
+     document.getElementById("PC_skill_resume").innerHTML = document.getElementById("Cand_Skill").value;
+     document.getElementById("lang_lev_resume").innerHTML = document.getElementById("Cand_Lang").value + "  " +
+                                                                                                               document.getElementById("Cand_Lang_Level").value; 
+     document.getElementById("photo_from").src=PREFIX+"_Photo";
+    }
+
+function CreateLis() {
+        var str_insert = "";
+        N = Number(document.getElementById("id_N_msg").innerHTML);
+        // alert(N);
+        for (var i = 0; i < N; i++)
+            str_insert += "<br><a class='unselected' href='javascript:f_click(" + i + ")'  id='li_" + i + "'> Сообщение " + (i + 1) + "</a> ";
+        document.getElementById("list_id").innerHTML = str_insert;
+    }
+    function f_ShowHide(id) {
+        document.getElementById(id).classList.toggle('hide');
+    }
+
+    CreateLis();
+</script>
+
+

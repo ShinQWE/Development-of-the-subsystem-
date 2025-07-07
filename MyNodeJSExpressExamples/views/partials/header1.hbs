@@ -1,0 +1,35 @@
+<style>
+    .topTitle_1 {   font: 600 21px Calibri;        color: #559;    }
+    .topTitle_2 {   font: 400 18px Calibri;        color: #559;    }
+    .topTitle_2_ {   font: 400 18px Calibri;    }
+    .header1_div1 {   margin-left: 1%;        display: grid;   height:60px;  
+                   grid-template-columns: 80px auto;   background-color:white;          border: 1px solid #ddd;                    }
+    .mm_over           {        background-color: #abc    }
+     .mm_mainMenu {  font: 400 17px Calibri;   color: white;   background: #558;  line-height: 35px;  padding-left: 90px;    }
+     .mm_NotChoosed {  text-decoration: none;        font-size: 1.1em;        color: #ececec;    }
+    .mm_Choosed {        text-decoration: underline;        font-size: 1.2em;        color: white;    }
+    a .disabled {        pointer-events: none;        cursor: pointer;        color: #ababab;    }  /* неактивная серая ссылка, курсор - стрелка */
+ </style>
+<div class="header1_div1">
+    <div>   <img src="fav.png" width="60" height="60"> </div>
+    <div style="line-height: 25px;">
+        <span class="topTitle_1">  Морской Государственный университет  </span><br>
+        <span class="topTitle_2">имени адмирала Невельского Г.И.         </span>
+    </div>
+</div>
+<div class="mm_mainMenu">
+    <a href="/" class="mm_NotChoosed" id="menuMain_0"> &nbsp; Главная &nbsp;</a> &nbsp;
+    <a href="/candidates" class="mm_NotChoosed" id="menuMain_1"> &nbsp;Соискателям &nbsp;</a>  &nbsp;
+    <a href="/employers" class="mm_NotChoosed" id="menuMain_2">  &nbsp;Работодателям &nbsp;</a>  &nbsp;
+    <a href="/moderator" class="mm_NotChoosed" id="menuMain_3">  &nbsp;Модератору &nbsp;</a>  &nbsp;
+    <a href="/help" class="mm_NotChoosed" id="menuMain_4">  &nbsp;Помощь &nbsp;</a>  &nbsp;
+    <a href="/out" class="mm_NotChoosed" id="menuMain_5">  &nbsp;Выйти &nbsp;</a>
+</div>
+<!--<div id="menu" style="width:100%">    { {> menuMain}}    </div> -->
+<script>
+    const topMenu = document.querySelector(".mm_mainMenu");
+    topMenu.addEventListener("mouseover", (event) => { event.target.classList.add('mm_over'); })
+    topMenu.addEventListener("mouseout",   (event) => { event.target.classList.remove('mm_over'); })
+
+</script>
+

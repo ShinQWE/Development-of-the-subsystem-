@@ -1,0 +1,83 @@
+<style>
+    .header3_div1 {  display: grid;  grid-template-columns: 35px 350px auto 200px 250px 25px;
+                                     grid-template-rows: 35px;  line-height: 25px;
+                                     font: 400 1.2rem Calibri; color: #345;   background-color: #eee;
+                                     border: 1px solid #ddd;  }
+    .menuEmpl {        line-height: 25px;        font: 400 1.1rem Calibri; 
+        background-color: #eee;        padding-left: 90px;        border-color: red
+                          }
+    .Choosed {  text-decoration: underline; font-size: 1.08em;  color: purple;    }
+    a { text-decoration: none;       color: darkgray;    }
+    a .disabled {  pointer-events: none;   cursor: pointer;   color: #aaa;
+        }     /* неактивная серая ссылка, курсор - стрелка */
+</style>
+
+<div class="header3_div1">
+    <div>   <img src="fav_48.ico" width="35" height="35"> </div>
+    <div style="text-align:center">  Личный кабинет работодателя    </div>
+    <div>  </div>
+    <div id="header3_all_vac"> Число вакансий  {{ALL_VAC_NUM}} </div>
+    <div id="header3_log">Логин  {{LOGIN}} </div>
+    <div id="header3_ind"> {{INDEX}} </div>
+   
+</div>
+<div class="menuEmpl">
+    <a href="/" id="home_Empl"> Главная </a> |
+    <a  id="anketa_Empl">  Анкета  </a> |
+    <a  id="create_vacancy_Empl">Создать/редактировать вакансию</a>|
+    <a  id="next_vacancy_Empl" style="display:none" >Редактировать вакансии</a>|
+    <a  id="look_resume_Empl">  Просмотр резюме кандидатов </a> |
+    <a  id="history_Empl">  История  </a> |
+</div>
+
+<script>
+    const MENU1 = document.querySelector('.menuEmpl');
+    MENU1.addEventListener('mouseover', (event) => { event.target.style.color = "purple"; });
+    MENU1.addEventListener('mouseout', (event) => { event.target.style.color = "darkgray"; });
+    MENU1.addEventListener('click', (event) => {  f_menuEmpl_1(event.target.id); });
+
+    function f_menuEmpl_1( id ) {
+        if (id == 'home_Empl') return;
+        var ind_ = document.getElementById("header3_ind").innerHTML;
+        ind_ = ind_.trim();
+        var t = (ind_ == null || ind_ == '' || ind_ == '-1') && (id != 'look_resume_Empl') && (id != 'home_Empl');
+        if (t) 
+            MyCustomAlert1("Переход на данную страницу разрешен только зарегистрированным пользователям");
+           // alert("Переход на данную страницу разрешен только зарегистрированным пользователям");
+        if ( !t ) {   var route = '/empl_anketa';
+                          if (id == 'create_vacancy_Empl')    route = '/empl_vacancy'
+                          else if (id == 'next_vacancy_Empl') {  route = '/empl_next_vacancy';
+                                    ind_ = ind_+"&"+((document.getElementById("id_vac_cur")).innerHTML).trim();                                                       
+                                                                                     }
+                          else if (id == 'look_resume_Empl') route = '/empl_look_resume';
+                          else if (id == 'history_Empl') route = '/empl_history';
+                          document.getElementById(id).setAttribute('href', route + '?' + ind_);          // alert(document.getElementById(id).getAttribute('href'));
+                     }
+    }
+        </script>
+
+<script>
+    function MyCustomAlert1(str) {
+        str = str.replace(/\n/g, "<br>");
+        var btn = document.createElement("button");
+        var btn_stl = "position:relative; padding-right: 10px; font: 500 1em calibri; border:3px double #fff; border-radius:10px; background:royalblue; color: #fff;";
+        btn.style = btn_stl;
+        btn.innerHTML = "&nbsp;&nbsp;OK&nbsp;&nbsp;";
+        var popupWnd = document.createElement("div");
+        var stl = "border:3px solid lightblue;  border-radius:25px; min-height:100px; min-width:250px; max-width:450px; "
+            + "padding-left: 20px; padding-right: 10px;padding-top: 10px;padding-bottom: 5px; font: 500 1.1em calibri; color: navy;"
+            + "box-shadow:  1px 2px 1px #ddd, 2px 3px 1px #ddd";
+
+        popupWnd.style = stl;
+        popupWnd.innerHTML = "<div  id='ID_DIV'>" + str + "<br><br>";
+        popupWnd.appendChild(btn);
+        btn.style.left = "70%";
+        btn.addEventListener("click", () => { document.body.removeChild(popupWnd); })
+
+        popupWnd.style.position = "absolute";
+        popupWnd.style.left = "45%";
+        popupWnd.style.top = 0;
+        popupWnd.style.backgroundColor = '#fff';
+        document.body.appendChild(popupWnd);
+    }
+    </script>

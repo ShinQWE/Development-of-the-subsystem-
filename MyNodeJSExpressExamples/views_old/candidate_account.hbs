@@ -1,0 +1,49 @@
+
+
+
+<div style=" margin-left: 5vw; margin-top: 10px;
+                       display: grid;   grid-template-columns: 300px 325px;  gap:1em">
+    <div>
+        <br>  <a href="#" class="a_reg" onclick="f_4('form_1_1')">{{title1}} </a><br>
+        <form action="/candidates" method="post" class="form_1  form_disabled" id="form_1_1">
+            <div class="form_grid">
+                <div>    <label> Логин: </label>  </div>      <div>    <input name="login" /></div>
+                <div>    <label> Пароль:</label>  </div>      <div>    <input type="password" name="password" /></div>
+                <div> </div>       <div> <input type="submit" value="Передача данных" onclick="f_4('form_1_1')"/></div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <br><a href="#" class="a_reg" onclick="f_4('form_1_2')">Регистрация нового соискателя </a><br><br>
+        <form action="/candidates" method="post" class="form_1  form_disabled" id="form_1_2">
+            <div class="form_grid">
+                <div>    <label> Логин: </label>  </div>      <div>    <input name="login" /></div>
+                <div>    <label> Пароль:</label>  </div>      <div>    <input type="password" name="password" /></div>
+                <div>   <label> Подтверждение <br> пароля : </label>  </div>
+                <div> <input type="password" name="password" /></div>
+                <div> </div>  <div> <input type="submit" value="Передача данных"  onclick="f_4('form_1_2')" /></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+  async  function ffff() {
+        var fd = { 'login': 'User' };
+        alert(fd);
+        const response = await fetch('/candidates', {
+            method: 'POST',
+            body: JSON.stringify(fd)
+        });
+        alert(response);
+    }
+    
+    function f_4(id) {
+        document.getElementById(id).classList.toggle("form_disabled");
+                                   }
+    f1_cand();                                 //  получить меню 2-го уровня
+    f2_cand_select("input_Cand");   // выделить команду input
+
+
+
+</script>

@@ -1,0 +1,40 @@
+
+<script src="js/Empl_script.js"></script>
+
+<div style=" margin-left: 5vw; margin-top: 10px;
+                       display: grid;   grid-template-columns: 300px 325px;  gap:1em">
+    <div>
+        <br>  <a href="#" class="a_reg" onclick="f_4('form_1_1')">{{title}} </a><br>
+        <form action="/employers" method="post" class="form_1  form_disabled" id="form_1_1">
+            <div class="form_grid">
+                <div>    <label> Логин: </label>  </div>      <div>    <input name="login" /></div>
+                <div>    <label> Пароль:</label>  </div>      <div>    <input type="password" name="password" /></div>
+                <div> </div>       <div> <input type="submit" value="Передача данных" onclick="f_4('form_1_1')" /></div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <br><a href="#" class="a_reg" onclick="f_4('form_1_2')">Регистрация нового работодателя </a><br><br>
+        <form action="/employers" method="post" class="form_1  form_disabled" id="form_1_2">
+            <div class="form_grid">
+                <div>    <label> Логин: </label>  </div>      <div>    <input name="login" /></div>
+                <div>    <label> Пароль:</label>  </div>      <div>    <input type="password" name="password" /></div>
+                <div>   <label> Подтверждение <br> пароля : </label>  </div>
+                <div> <input type="password" name="password" /></div>
+                <div> </div>  <div> <input type="submit" value="Передача данных" onclick="f_4('form_1_2')" /></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function f_4(id) {
+        document.getElementById(id).classList.toggle("form_disabled");
+    }
+
+    function f2_empl_select(id) {
+        var obj = document.getElementById(id);                obj.classList.add("selected_item");  // выделить пункт   
+    }
+    f1_Empl_menu2();                                                          //  получить меню 2-го уровня
+    f2_empl_select("input_Empl");                                     // выделить  пункт  'Войти'  меню 2-го уровня
+</script>

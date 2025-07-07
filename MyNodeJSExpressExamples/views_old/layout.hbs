@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div style=" height:90vh ; margin:auto;  display: grid; grid-template-columns:80% 20% ">
+        <div style="border:1px solid #ddd; ">
+            {{{body}}}                                                                                          <!-- представления (views) -->
+        </div>
+        <div style="border: 1px solid lightblue;" >
+          {{> visitors_info}}
+    </div>
+    </div>
+    <!--   span id="header_num"> {{HEADER}} </!--span>               -->
+    {{> footer}}
+</body>
+</html>
+
+
+
+

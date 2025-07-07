@@ -1,0 +1,348 @@
+<div id="header2">    {{> header2}}        </div>
+<link rel="stylesheet" href="css/resume.css" />
+<script src="js/Cand_script_resume.js"></script>
+
+
+<div class='grid_out'>
+    <div>
+        <span class="Title"> Редактирование резюме соискателя  </span>
+
+        <div style="overflow-x: auto; overflow-y: auto; border: solid thin aliceblue; max-height: 75vh; width: 100%;">
+
+            <div class="outer">
+                <a href="javascript:f1('frm1')" class="innerTitle">
+                    <span id="frm1_" class="innerTitle_">▷</span>&nbsp;&nbsp; Идентификационные и контактные данные
+                </a>        <br>
+                <form method="post" class="gr hide" id="frm1" name="frm1">
+                    <div>Фамилия</div>               <div><input type="text" name="Cand_Family" id="Cand_Family" value="Иванов" /></div>
+                    <div>Имя</div>                         <div> <input type="text" name="Cand_Name" id="Cand_Name" value="Иван" /></div>
+                    <div>Отчество</div>               <div><input type="text" name="Cand_SurName" id="Cand_SurName" value="Иванович" /></div>
+                    <div>Пол (М / Ж)</div>          <div><input type="text" name="Cand_Gender" id="Cand_Gender" value="" /></div>
+                    <div>Дата рождения              </div> <div><input type="date" name="Cand_Birthday" id="Cand_Birthday" /></div>
+                    <div>Адрес эл. почты            </div> <div><input type="text" name="Cand_Email" id="Cand_Email" value="ivanov@gmal.com" /></div>
+                    <div>Телефон                            </div> <div><input type="text" name="Cand_Phone" id="Cand_Phone" value="7 924 123 44 55" /></div>
+                </form>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm2')" class="innerTitle">
+                    <span id="frm2_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные об основном образовании
+                </a>        <br>
+                <form method="post" class="gr hide" id="frm2" name="frm2">
+                    <div>Вуз</div>
+                    <div>
+                        <input type="text" name="Cand_Institute" id="Cand_Institute" value="МГУ им. адм. Невельского Г.И." />
+                    </div>
+                    <div>Курс (1 - 6)</div>        <div><input type="text" name="Cand_Year" id="Cand_Year" value="" /></div>
+                    <div>Факультет</div>
+                    <div>
+                        <input type="text" name="Cand_Faculty" id="Cand_Faculty" onclick="Faculty()" value="">*
+                        <br> <select id="sel1" name="sel1" class="hide opt1" style="position:relative; left:0px"></select>
+                    </div>
+                    <div>Специализация</div>
+                    <div>
+                        <textarea row="2" name="Cand_Specialization" id="Cand_Specialization" onclick="FacSpecialization()"></textarea>*
+                        <br> <select id="sel2" name="sel2" class="hide opt1" style="position:relative; left:0px">
+                        </select>
+                    </div>
+                    <div>Уровень образования</div>
+                    <div>               <input type="text" name="Cand_Level" id="Cand_Level" value="">     </div>
+                    <div>Год поступления/окончания</div>
+                    <div>
+                        <input type="number" class="shortDate" name="Cand_Date1" id="Cand_Date1" value="" />   &nbsp;  -  &nbsp;
+                        <input type="number" class="shortDate" name="Cand_Date2" id="Cand_Date2" value="" />
+                    </div>
+                    <div></div>    <div> <input type="submit" id="sbm_frm2" hidden /></div>
+                </form>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm3')" class="innerTitle">
+                    <span id="frm3_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные о дополнительном образовании
+                </a>            <br>
+                <form method="post" class="gr hide" id="frm3" name="frm3">
+                    <div>Вуз</div>   <div><input type="text" name="Cand_Institute__" id="Cand_Institute__" value="" onchange="ShowPos_AddEdu()" /></div>
+                    <div>Период обучения</div>
+                    <div>
+                        <input type="date" class="shortDate" name="Cand_Date1__" id="Cand_Date1__" value="" />   &nbsp;  -  &nbsp;
+                        <input type="date" class="shortDate" name="Cand_Date2__" id="Cand_Date2__" value="" />
+                    </div>
+                    <div>Специализация</div>
+                    <div><textarea rows="2" name="Cand_Specialization_Add" id="Cand_Specialization_Add"></textarea></div>
+
+                    <div id="INSERT_1"></div>
+                    <div><a href="javascript: AddNewPos_AddEdu()" class="innerRefColor ">  Добавить строки для ввода новых данных </a> </div>
+                </form>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm4')" class="innerTitle">
+                    <span id="frm4_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные о дополнительной подготовке
+                </a>                <br>
+                <form class="gr hide" id="frm4" name="frm4">
+                    <div>Навык работы с ПК </div>
+                    <div>
+                        <input type="text" name="Cand_Skill" id="Cand_Skill" value="" onclick="PC_Skill()" />*
+                        <br> <select id="sel3" name="sel3" class="hide opt1" style="position:relative; left:0px">
+                            <option value="Выбрать из списка" selected>Выбрать из списка</option>
+                            <option value="Слабый уровень">Слабый уровень</option>
+                            <option value="Средний уровень">Средний уровень</option>
+                            <option value="Уверенное владение">Уверенное владение</option>
+                        </select>
+                    </div>
+                    <div>Владение специали-зированным ПО</div>
+                    <div>   <textarea rows="2" name="Cand_Soft" id="Cand_Soft"></textarea> </div>
+                    <div>Знание иностранных языков </div>
+                    <div><input type="text" name="Cand_Lang" id="Cand_Lang" value="" /></div>
+                    <div>Уровень владения</div>
+                    <div>
+                        <input type="text" name="Cand_Lang_Level" id="Cand_Lang_Level" value="" onclick="Lang_Skill()" />*
+                        <br> <select id="sel4" name="sel4" class="hide opt1" style="position:relative; left:0px">
+                            <option value="Выбрать из списка" selected>Выбрать из списка</option>
+                            <option value="A1 (начальный)">A1 (начальный)</option>
+                            <option value="A2 (элементарный)">A2 (элементарный)</option>
+                            <option value="B1 (средний)">B1 (средний)</option>
+                            <option value="B2 (средне-продвинутый)">B2 (средне-продвинутый)</option>
+                            <option value="C1 (продвинутый)">C1 (продвинутый)</option>
+                            <option value="C2 (в совершенстве)">C2 (в совершенстве)</option>
+                        </select>
+                    </div>
+                    <div>Дополнительные навыки</div>
+                    <div><textarea rows="2" cols="40" id="Cand_AuxSkill" name="Cand_AuxSkill"></textarea></div>
+                </form>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm5')" class="innerTitle">
+                    <span id="frm5_" class="innerTitle_">▷</span>&nbsp;&nbsp; Дополнительные сведения
+                </a>              <br>
+                <form class="gr hide" id="frm5" name="frm5">
+                    <div>Область интересов</div>
+                    <div><textarea rows="2" cols="40" id="Cand_Interest" name="Cand_Interest"></textarea></div>
+                    <div> Сопроводительное письмо<a href="javascript: IncreeseField()">▽ </a></div>
+                    <div>
+                        <textarea rows="2" cols="45" id="Cand_AddLetter" name="Cand_AddLetter"></textarea>
+                    </div>
+
+                </form>
+
+                <form class="gr" enctype="multipart/form-data" id="form_files">
+
+                    <div id="part1_photo">
+                        Фото соискателя <input type="text" id="Cand_ID" name="Cand_ID" value="{{INDEX}}" class="hide"><br>
+                        <a href="javascript:ShowHideFile(-1) " id='image_left_photo' title="Показать/скрыть"> ▽ </a> &nbsp;  &nbsp;
+                        <a href="javascript:DeleteFile(-1)" id='image_left_photo0' title="Удалить"> &mdash;</a> &nbsp;  &nbsp;
+                        <a href="javascript:AddUpdFile(-1)" id='image_left_photo00' title="Вставить/изменить">&nbsp;+&nbsp;</a>
+</div>
+                    <div id="part2_photo">
+                        <input type="text" id="Cand_File_photo" name="Cand_File_photo" onclick="AddUpdFile(-1)" value=" ">
+                        <input type="file" id="Cand_File_hidden_photo" name="Cand_File_hidden_photo" accept=".jpg, .jpeg, .png, .gif " class="hide">
+                    </div>
+                    <div id="part3_photo"></div>
+                    <div id="part4_photo"><img id="image_photo" style="max-height: 200px; max-width: 200px;">      </div>
+
+                    <div id="part1_0">
+                        Фото документа 1<br>
+                        <a href="javascript:ShowHideFile(0) " id='image_left_0' title="Показать/скрыть"> ▽ </a> &nbsp;  &nbsp;
+                        <a href="javascript:DeleteFile(0)" id='image_left_00' title="Удалить"> &mdash;</a> &nbsp;  &nbsp;
+                        <a href="javascript:AddUpdFile(0)" id='image_left_000' title="Вставить/изменить">&nbsp;+&nbsp; </a>
+                        <a href="javascript:IncDecFile(0)" id='image_left_photo000' title="Изменить размер"> &nbsp; &nbsp; &#8660; </a>
+                    </div>
+                    <div id="part2_0">
+                        <input type="text" id="Cand_File_0" name="Cand_File_0" onclick="AddUpdFile(0)" value=" ">
+                        <input type="file" id="Cand_File_hidden_0" name="Cand_File_hidden_0" class="hide" accept=".jpg, .jpeg, .png, .gif ">
+                    </div>
+                    <div id="part3_0"> </div>
+                    <div id="part4_0"> <img id="image_0"src="" style="max-height: 200px; max-width: 200px;" class="graph_doc" >  </div>
+
+                    <div id="INSERT"> </div>
+                    <div>
+                        <a href="javascript:  AddNewPositionsFile( )" class="innerRefColor"> Добавить документ </a> <br>
+                        <a href="javascript: SaveGraphFilesOnServer ()" class="innerRefColor">Сохранить документы (файлы)</a>
+                    </div>
+                </form>
+
+
+
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm6')" class="innerTitle">
+                    <span id="frm6_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные о последнем месте работы по специальности
+                </a>              <br>
+                <form class="gr hide" id="frm6" name="frm6">
+                    <div>Предприятие </div>   <div><input type="text" id="Cand_Company" name="Cand_Company" value="" /></div>
+                    <div>Должность </div>   <div><input type="text" id="Cand_Job" name="Cand_Job" value="" /></div>
+                    <div>Регион </div>   <div><input type="text" id="Cand_Region" name="Cand_Region" value="" /></div>
+                    <div>Город </div>   <div><input type="text" id="Cand_City" name="Cand_City" value="" /></div>
+                    <div>Дата приема /увольнения</div>
+                    <div>
+                        <input type="date" class="shortDate" name="Cand_Date3" id="Cand_Date3" value="" />  &nbsp;-&nbsp;
+                        <input type="date" class="shortDate" name="Cand_Date4" id="Cand_Date4" value="" />
+                    </div>
+                </form>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm7')" class="innerTitle">
+                    <span id="frm7_" class="innerTitle_">▷</span>&nbsp;&nbsp; Деловые и личностные качества
+                </a>    <br>
+                <form class="hide" id="frm7" name="frm7">
+                    <div class="innerTitle">Отметьте качества, которыми, на Ваш взгляд, Вы обладаете</div>
+
+                    <div style="display: grid; grid-template-columns: 50px auto; font:400 1.0em calibri; color: #345">
+                        <div><input type="checkbox" name="Cand_q1" id="Cand_q1" value="1">                        </div>
+                        <div> Обучаемость </div>
+                        <div> <input type="checkbox" name="Cand_q2" id="Cand_q2" value="2"></div>
+                        <div>  Адаптация к информационным системам </div>
+                        <div> <input type="checkbox" name="Cand_q3" id="Cand_q3" value="3"></div>
+                        <div> Умение работать с большим количеством информации</div>
+                        <div> <input type="checkbox" name="Cand_q4" id="Cand_q4" value="4"></div>
+                        <div>Умение работать в команде    </div>
+                        <div> <input type="checkbox" name="Cand_q5" id="Cand_q5" value="5"></div>
+                        <div> Инициативность   </div>
+                        <div> <input type="checkbox" name="Cand_q6" id="Cand_q6" value="6"></div>
+                        <div>Стремление к повышению профессионального уровня </div>
+                        <div>  <input type="checkbox" name="Cand_q7" id="Cand_q7" value="7"></div>
+                        <div>Исполнительность, ответственность </div>
+                        <div>  <input type="checkbox" name="Cand_q8" id="Cand_q8" value="8"></div>
+                        <div>Самостоятельность    </div>
+                        <div> <input type="checkbox" name="Cand_q9" id="Cand_q9" value="9"></div>
+                        <div> Коммуникабельность,  уравновешенность, вежливость   </div>
+                        <div>  <input type="checkbox" name="Cand_q10" id="Cand_q10" value="10"></div>
+                        <div> Принципиальность  </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm8')" class="innerTitle">
+                    <span id="frm8_" class="innerTitle_">▷</span>&nbsp;&nbsp; Ключевые слова
+                </a>              <br>
+                <form class="gr hide" id="frm8" name="frm8">
+                    <div>Ключевые слова для поиска вакансий</div>
+                    <div><textarea rows="2" cols="40" name="Cand_Keys" id="Cand_Keys"></textarea></div>
+                </form>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm9')" class="innerTitle">
+                    <span id="frm9_" class="innerTitle_">▷</span>&nbsp;&nbsp; Даты создания и последней редакции резюме
+                </a>              <br>
+                <form class="gr hide" id="frm9" name="frm9">
+                    <div></div>
+                    <div>
+                        <input type="date" class="shortDate" name="Cand_Date5" id="Cand_Date5" value="" disabled /> &nbsp;-&nbsp;
+                        <input type="date" class="shortDate" name="Cand_Date6" id="Cand_Date6" value="" disabled />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="outer1">
+            <a href="javascript: SaveData()" style="padding-left: 70px;" class="innerRefColor">  Сохранить данные   </a><br>
+        </div>
+    </div>
+
+    <div>
+        <span class="Title">  Справка по заполнению резюме </span><br>
+        <a href="javascript:f1('pp1')" class="innerTitle">
+            <span id="pp1_" class="innerTitle">◤</span>&nbsp;&nbsp; Показать / скрыть
+        </a>
+        <div class="note_border">
+            <div id="pp1" style="width:98%">текст справки</div>
+        </div>
+        <div style="display:none">
+            <span id="LOGIN">{{LOGIN}}</span>
+            <span id="INDEX">{{INDEX}}</span>
+            <span id="RESUME">{{RESUME}}</span>
+            <span id="GRAPHNAMES">{{GRAPHNAMES}}</span>
+
+        </div>
+    </div>
+    <br>
+</div>
+
+<script>
+    var client_login = '';
+    var client_ind = '';
+    var res = '';
+    var n_back;
+    window.onload = function () {
+        client_login = document.getElementById("LOGIN").innerText;
+        client_ind = document.getElementById("INDEX").innerText;
+        document.getElementById("header2_log").innerText = client_login;
+        document.getElementById("header2_ind").innerText = client_ind;
+        document.getElementById("Cand_ID").innerText = client_ind;
+        FillResume();
+    }
+    function FillResume()       //▷◤//
+    {  var R_str = document.getElementById("RESUME").innerText;
+        var itemsMenu = R_str.split("◤");
+        var N = itemsMenu.length;                                       //       alert("N=" + N +  "\n" +R_str);
+        var res = "число эл-в в масстве  itemsMenu =" + N + "\n";
+        for (var i = 0; i < N - 1; i++) {
+            var item = itemsMenu[i].split("▷");
+            var id = (item[0]).trimStart();
+           // if (i > 36) console.log(itemsMenu[i]);
+            var val = item[1];
+            if (val === '') val = '-';
+            var tagName = document.getElementById(id).tagName;
+            var typeCheckbox = false;                               //  console.log(i + "  " + itemsMenu[i] + "  id='" + id + "'    val='" + val + "'    tagName =" + tagName);
+            if (tagName == "INPUT") {
+                  typeCheckbox = document.getElementById(id).getAttribute('type') == 'checkbox';
+                  if (typeCheckbox == true) document.getElementById(id).checked = true;
+                  else document.getElementById(id).value = val;
+            }
+            else document.getElementById(id).innerHTML = val;    
+                                                                                      // if (id == "Cand_AddLetter") alert(val);
+        }                                                                            // конец цикла  for (var i = 0; i < N - 1; i++) {
+        document.getElementById("Cand_Date6").valueAsDate = new Date();
+                                                                                      // alert (document.getElementById("Cand_Date6"));
+                                                                                      //Загрузка граф. файлов из директории Public
+        var gr_names = document.getElementById("GRAPHNAMES").innerHTML.split("◤");        //   alert("gr_names = " + gr_names);
+                                                                                      // Чтение фото соискателя
+        N = gr_names.length;
+        for ( var i = 0; i < N;  i++) { 
+                var f_name = gr_names[i].replace("Public\\", "");               //  alert("f_name = " + f_name);
+                var num;
+                if (f_name.includes("_Doc_")) num = i-1;
+                else num = "photo";
+                if (i > 1) AddNewPositionsFile();
+                LoadFileFromServer(f_name, num);
+        }
+    }                                                                                                   //конец метода  FillResume()  
+    function LoadFileFromServer(f_name, num)                         //имя файла в директории Public,  индекс в Client_Files[num] 
+    {   const input_file_id = "Cand_File_hidden_" + num;          // id в <input type='file'   . . .
+        const img_id = "image_" + num; 
+        const input_text = "Cand_File_" + num;
+       // alert("input_file_id" + input_file_id);
+        fetch(f_name)
+           .then ( response => response.blob() )
+           .then ( blob => {   const file = new File ( [blob],  f_name );
+                                          const dataTransfer = new DataTransfer();
+                                          dataTransfer.items.add(file);
+                                          document.getElementById ( input_file_id).files = dataTransfer.files;
+                                          document.getElementById ( img_id).src = URL.createObjectURL(blob);
+                                          document.getElementById(input_text).value = f_name;
+                                          Client_Files[num] = URL.createObjectURL(blob);
+                                         });       
+    } 
+
+
+
+    //  выполняется при загрузке страницы
+    PrepVar_1();
+    NodeText().then((data) => {
+        document.querySelector("#pp1").innerHTML = data;
+        modal = document.querySelector('#modal');       //            alert("modal=" + modal);
+        modal.addEventListener('click', function (e) {      /*   alert("modalClick");*/  e.stopPropagation(); });
+    });
+
+
+    
+
+</script>
+
+

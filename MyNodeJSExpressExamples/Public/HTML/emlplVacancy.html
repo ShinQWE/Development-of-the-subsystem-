@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>RES</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../css/resume.css" />
+    <script src="../js/Empl_script.js"></script>
+</head>
+
+<body>
+    <div class='grid_out'>
+        <div>
+            <span class="Title">Создание новой вакансии</span>
+            <div style="overflow-x: hidden; overflow-y: auto; border: solid thin aliceblue; max-height: 80vh; width: 100%;">
+
+                <div class="outer">
+                    <a href="javascript:Empl_f1('frm1_1')" class="innerTitle">
+                        <span id="frm1_1_" class="innerTitle_">▷</span>&nbsp;&nbsp; Сведения о вакансии
+                    </a>  <br>
+                    <div class="gr hide" id="frm1_1">
+                        <div>Код (по Реестру Минтруда)</div>
+                        <div>
+                            <textarea rows="2" cols="40" name="Vac_Code" id="Vac_Code" value=" " onclick="GetVacValue('sel1_vac', 'Vac_Code')"></textarea>*
+                            <br> <select id="sel1_vac" name="sel1_vac" class="opt1  hide" style="position:relative; left:0px">
+                               
+                            </select>
+                        </div>
+                        <div>Должность</div>                                        <div> <input type="text" name="Vac_JobTitle" id="Vac_JobTitle" value="" /></div>
+                        <div>Должностные обязанности</div>         <div><textarea rows="2" cols="40" name="Vac_JobResp" id="Vac_JobResp" value=""></textarea></div>
+                        <div>Вид работы</div>                                        <div>
+                            <input type="text" name="Vac_JobType" id="Vac_JobType" value="" onclick="GetVacValue('sel2_vac', 'Vac_JobType')" />*
+                            <br> <select id="sel2_vac" name="sel2_vac" class="opt1  hide" style="position:relative; left:0px">
+                                <option value="Выбрать из списка" selected>Выбрать из списка</option>
+                                <option value="Постоянная"> Постоянная</option>
+                                <option value="Постоянная по совместительству"> Постоянная  по совместительству</option>
+                                <option value="Временная"> Временная</option>
+                            </select>
+                        </div>
+                        <div>График  работы</div>                                        <div>
+                            <input type="text" name="Vac_Schedule" id="Vac_Schedule" value="" onclick="GetVacValue('sel3_vac', 'Vac_Schedule')" />*
+                            <br> <select id="sel3_vac" name="sel3_vac" class="opt1  hide" style="position:relative; left:0px">
+                                <option value="Выбрать из списка" selected>Выбрать из списка</option>
+                                <option value="Нормальный график"> Нормальный график</option>
+                                <option value="Скользящий график"> Скользящий график</option>
+                                <option value="Сокращенный график">Сокращенный график</option>
+                                <option value="Неполное рабочее время">Неполное рабочее время</option>
+                                <option value="Ненормированный график">Ненормированный график</option>
+                            </select>
+                        </div>
+                        <div>Зарплата </div>                                        <div>
+                            <input type="text" name="Vac_Salary" id="Vac_Salary" value="" style="width:202px" onclick="GetVacValue('sel4_vac', 'Vac_Salary')" />*&nbsp;    <input type="number" name="Vac_Salary_1" id="Vac_Salary_1" value="" style="width:90px" />
+                            <br> <select id="sel4_vac" name="sel4_vac" class="opt1  hide" style="position:relative; left:0px">
+                                <option value="Выбрать из списка" selected>Выбрать из списка</option>
+                                <option value="Фиксированная"> Фиксированная</option>
+                                <option value="Минимальная"> Минимальная</option>
+                                <option value="По результатам собеседования"> По результатам собеседования</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="outer">
+                    <a href="javascript:Empl_f1('frm2_1')" class="innerTitle">
+                        <span id="frm2_1_" class="innerTitle_">▷</span>&nbsp;&nbsp; Требования к соискателю
+                    </a>              <br>
+                                      <div class="gr hide" id="frm2_1">
+                                          <div></div>              <div><i>Профессиональные</i></div>
+
+                                          <div>   Специализация (Профессиональный стандарт)</div>
+                                          <div>
+                                              <textarea rows="5" name="Vac_JobBase" id="Vac_JobBase" value=" "
+                                                        onclick="GetMultValue( )"></textarea>*
+                                              <br> <select id="sel6_vac" name="sel6_vac" class="hide opt1"
+                                                           style="position:relative; left:0px;">
+                                              </select>
+                                          </div>
+
+                                          <div>Уровень работы с ПК </div>
+                                          <div>
+                                              <input type="text" name="Vac_PC_Skill" id="Vac_PC_Skill" value=" " onclick="GetVacValue('sel5_vac',  'Vac_PC_Skill')" />*
+                                              <br> <select id="sel5_vac" name="sel5_vac" class="hide opt1" style="position:relative; left:0px">
+                                                  <option value="Выбрать из списка" selected>Выбрать из списка</option>
+                                                  <option value="Не требуется">Не требуется</option>
+                                                  <option value="Слабый уровень">Слабый уровень</option>
+                                                  <option value="Средний уровень">Средний уровень</option>
+                                                  <option value="Уверенное владение">Уверенное владение</option>
+                                              </select>
+                                          </div>
+                                          <div>Владение специали-зированным ПО</div>
+                                          <div>   <textarea rows="2" name="Vac_Soft" id="Vac_Soft"> </textarea>       </div>
+
+                                          <div>Дополнительные требования</div>
+                                          <div>   <textarea rows="3" name="Vac_AddSkill" id="Vac_AddSkill"> </textarea>       </div>
+
+                                          <div>Укажите необходи-<br>мые качества соис-<br>кателя</div>
+                                          <div><i>Деловые и личностные </i> <br>
+                                              <table id="tbl1">
+                                                  <tr>  <td><input type="checkbox" name="q1" id="q1" value="1"> </td>
+                                                         <td>Обучаемость    </td>                                                   </tr>
+                                                  <tr>  <td><input type="checkbox" name="q2" id="q2" value="2"> </td>
+                                                            <td>Адаптация к информационным системам    </td>      </tr>
+                                                  <tr>  <td><input type="checkbox" name="q3" id="q3" value="3"> </td>
+                                                      <td>Умение работать с большим количеством информации    </td>   </tr>
+                                                  <tr>   <td><input type="checkbox" name="q4" id="q4" value="4"> </td>
+                                                      <td>Умение работать в команде    </td>                        </tr>
+                                                  <tr>     <td><input type="checkbox" name="q5" id="q5" value="5"> </td>
+                                                      <td>Инициативность   </td>  </tr>
+                                                  <tr>    <td><input type="checkbox" name="q6" id="q6" value="6"> </td>
+                                                      <td>Стремление к повышению профессио - <br>нального уровня </td>      </tr>
+                                                  <tr>     <td><input type="checkbox" name="q7" id="q7" value="7"> </td>
+                                                      <td>Исполнительность, ответственность </td>   </tr>
+                                                  <tr>
+                                                      <td><input type="checkbox" name="q8" id="q8" value="8"> </td>
+                                                      <td>Самостоятельность    </td>                                                  </tr>
+                                                  <tr>     <td><input type="checkbox" name="q9" id="q9" value="9"> </td>
+                                                      <td>Коммуникабельность,  уравновешенность, вежливость   </td>   </tr>
+                                              </table>
+                                          </div>
+                                      </div>
+                </div>
+
+
+
+                <div class="outer">
+                    <a href="javascript:Empl_f1('frm9_1')" class="innerTitle">
+                        <span id="frm9_1_" class="innerTitle_">▷</span>&nbsp;&nbsp; Даты создания и последней редакции
+                    </a>              <br>
+                    <div class="gr hide" id="frm9_1">
+                        <div></div>
+                        <div>
+                            <input type="date" class="shortDate" name="Vac_Date1" disabled />  &nbsp;-&nbsp;
+                            <input type="date" class="shortDate" name="Vac_Date2" disabled />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="outer1">
+                <a href="javascript: SaveData_Vac()" style="padding-left:70px">  Сохранить данные   </a>
+            </div>
+
+        </div>
+        <div>
+            <span class="Title">
+                Справка по созданию вакансии
+            </span><br>
+            <a href="javascript:f1('Vac_pp1')" class="innerTitle">
+                <span id="Vac_pp1_" class="innerTitle">◤</span>&nbsp;&nbsp; Показать / скрыть
+            </a>
+            <div class="note_border">
+                <div id="pp1" style="width:98%">текст справки</div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    <script>
+        var jobList_Options = null;
+
+            function GetVacValue(id_sel, id_elem) {                                    // выбор эл-та указанного списка, эл-т списка   --> эл-т   с   id_elem
+            var sel = document.querySelector('#' + id_sel);
+            sel.classList.remove('hide');
+            sel.addEventListener('change', function (e) {
+                var code = e.target.value;
+                sel_index = sel.selectedIndex;                                                     // индекс эл-та  select
+                sel.classList.add("hide");                                                              //сокрытие select
+                document.querySelector('#' + id_elem).value = code;          // элемент списка -> поле элемента
+                if (id_sel === 'sel1_vac')     { CreateJobListOptions(code);       return; }
+                if (id_sel === 'sel4_vac')     { CheckSalaryType(sel_index);    return; }
+                if (id_sel === 'sel5_vac')     { SetVacSoft(sel_index);                return; }
+            });
+        }
+        function CheckSalaryType(sel_index) {
+            var obj = document.querySelector('#Vac_Salary_1');
+            if (sel_index === 3) { obj.setAttribute("disabled", "disabled"); obj.value = ""; return; }
+            obj.removeAttribute("disabled");
+        }
+        function SetVacSoft(sel_index) {
+            var obj = document.querySelector('#Vac_Soft');
+            if (sel_index === 1) obj.value = 'Не требуется'
+            else obj.value = '';
+        }
+
+        async function ReadJobList(code)
+        {  var d2 = (code.trim()).substring(0, 2);                                                                        //  alert('/' + d2 + '/');
+            var response = await fetch('/TEXT/JobLists/' + d2 + '.txt');
+            var text = await response.text();        
+            return text;
+        }
+        var options = null;
+        var sel6 = null;
+        var sel6_index = 0;
+        function CreateJobListOptions(code)                                                                            // вызывается при выборе пар-ра Код (по реестру МинТруда)
+        {  ReadJobList(code).then((data) =>
+                        {   var lines = data.split(['\n']);                                                                              //      alert("  lines = " + lines.length);
+                             var N = lines.length;
+                            options = "<option value='Выбрать из списка' selected>Можно выбрать несколько значений из списка</option>";
+                           for (var i = 0; i < N; i++)
+                           {  var line = lines[i].replace(/\s+/g, ' ');
+                               options += "<option value='" + line + "'>" + line + "</option>";     //     console.log(options);   
+                           }    
+                            sel6 = document.querySelector('#sel6_vac');
+                            sel6.innerHTML = options;
+                            var receiver = document.querySelector('#Vac_JobBase'); 
+                           sel6.addEventListener('blur',       () =>  {  sel6.classList.add("hide");    });
+                           sel6.addEventListener('change',  function (e) {    var code = e.target.value;
+                                                                                                                        receiver.value += code + "\n";     
+                                                                                                                        sel6_index++;                       //    console.log("code=" + code); 
+                                                                                                                         receiver.click();
+                                                                        });
+                       });
+        }
+   function GetMultValue()
+   {  sel6.classList.remove('hide');
+   }
+   
+        //-------------------Прочитать текст справки-----------------------------------------------------------------------------
+        async function Vac_NodeText() {
+            var response = await fetch('/TEXT/emplVacNote.txt');
+            var text = await response.text();                                                       //console.log(text);
+            return text;
+        }
+        //-------------------Прочитать областей деятельности  /TEXT/00.txt, сформировать options  ->select----------------------------------
+        async function ReadList_00() {
+            var response = await fetch('/TEXT/JobLists/00.txt');
+            var text = await response.text();
+            return text;
+        }
+        function Create_sel1()
+        {  ReadList_00().then( (data) => {
+                    var lines = data.split(['\n']);                                                                              //      alert("  lines = " + lines.length);
+                     var N = lines.length;
+                     options = "<option value='Выбрать из списка' selected>Выбрать из списка</option>";
+                     for (var i = 0; i < N; i++) {
+                         options += "<option value='" + lines[i] + "' >" + lines[i] + "</option>";        //console.log(options);   
+                                                                }
+                    document.querySelector("#sel1_vac").innerHTML = options;
+                                                                                });
+        }
+        //-----------------------------------------------------------------------------------------
+          Vac_NodeText().then((data) => {
+                       document.querySelector("#pp1").innerHTML = data;
+                       Create_sel1();
+                                                                   })
+  //-----------------------------------------------------------------------------------------
+    </script>
+</body>
+</html>

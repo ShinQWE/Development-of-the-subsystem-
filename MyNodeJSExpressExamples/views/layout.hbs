@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/personalArea.css" />  
+    <style> 
+    body {   margin-left:16px;  margin-right:16px; margin-top:3px }
+      .main_struct {display: grid;  grid-template-columns:4fr 1fr; height:95vh ;  border:1px solid gray; }
+    </style>
+    <script src="js/Common_script.js"></script>
+ </head>
+<body>
+    <div class="main_struct" >
+        <div style="border:1px solid lightblue; ">
+            {{{body}}}                                                                                          <!-- представления (views) -->
+        </div>
+        <div style="border: 1px solid lightblue" >
+          {{> visitors_info}}
+    </div>
+</div>
+  
+    {{> footer}}
+</body>
+</html>
+
+
+
+

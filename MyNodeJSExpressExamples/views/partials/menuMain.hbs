@@ -1,0 +1,31 @@
+<style>
+    .mm_over         { background-color:#abc }
+   .mm_topMenu {  font: 400  17px Calibri;    color:white; background: #558;    line-height: 35px;    padding-left: 90px;  }
+   .mm_NotChoosed {  text-decoration: none;    font-size: 1.1em;    color: #ececec;  }
+  .mm_Choosed        {  text-decoration: underline;   font-size: 1.2em;    color: white; }
+  a. disabled {    pointer-events: none;    cursor: pointer;    color: #ababab;}  /* неактивная серая ссылка, курсор - стрелка */
+</style>
+<div class="mm_topMenu">
+    <a href="/"                      class="mm_NotChoosed" id="menuMain_0"> &nbsp; Главная &nbsp;</a> &nbsp; 
+    <a href="/candidates" class="mm_NotChoosed" id="menuMain_1"> &nbsp;Соискателям &nbsp;</a>  &nbsp; 
+    <a href="/employers" class="mm_NotChoosed" id="menuMain_2">  &nbsp;Работодателям &nbsp;</a>  &nbsp;
+    <a href="/moderator" class="mm_NotChoosed" id="menuMain_3">  &nbsp;Модератору &nbsp;</a>  &nbsp;
+    <a href="/help"              class="mm_NotChoosed" id="menuMain_4">  &nbsp;Помощь &nbsp;</a>  &nbsp; 
+    <a href="/out"                class="mm_NotChoosed" id="menuMain_5">  &nbsp;Выйти &nbsp;</a>
+</div>
+
+<script>
+    const  topMenu = document.querySelector(".mm_topMenu");
+    topMenu.addEventListener("mouseover", (event) => { event.target.classList.add('mm_over'); }) 
+    topMenu.addEventListener("mouseout",   (event) => { event.target.classList.remove('mm_over'); }) 
+
+ </script>
+
+
+
+
+
+
+
+
+

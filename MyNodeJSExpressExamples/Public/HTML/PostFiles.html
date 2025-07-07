@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Node.js</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>Upload file</h1>
+    <form method="post" enctype="multipart/form-data">
+        <!--  input type="file" name="Cand_File" /><br  -->         <!--  "http://localhost:3000/upload"   -->
+        <label> ID> </label>
+         <input type="text" name="Cand_ID" id="Cand_ID" value="0" />
+        <br>   Фото
+        <input type="file" name="Cand_Photo" id="Cand_Photo" >
+        <br>   Документ 1
+        <input type="file" name="Cand_Doc_1" id="Cand_Doc_1" >
+        <br>   <!--  Группа документов        <input type="file" name="Cand_Files" id="Cand_Files" multiple>  -->
+
+        <br> Отправить
+        <input type="button" value="Send" onclick="F()" />
+    </form>
+
+
+    <script>
+        async function F() {
+            var  formData = new FormData();
+            formData.append("cand_id", document.getElementById("Cand_ID").value);
+            const photo = document.querySelectorAll('input[type="file"]');
+            alert(photo.length);
+            formData.append("CAND_FILES", photo[0].files[0]);
+            formData.append("CAND_FILES", photo[1].files[0]);
+            const response1 = await fetch("/upload", {  method: "POST",
+                                                                                               body: formData, });
+            const result1 = await response1.text(); //,.json();
+            alert(result1);
+            return;
+
+                 // отправка группа файлов
+                const photos = document.querySelector('input[type="file"][multiple]');
+                for (let i = 0; i < photos.files.length; i++) {    formData.append("CAND_FILES", photos.files[i]); }
+               const response = await fetch("/upload", {    method: "POST", body: formData, });
+               const result = await response.text();                    //,.json();
+                alert(result);
+    }
+        function F2()
+        {               // показать фото 
+        } 
+
+    </script>
+
+</body>
+</html>
+
+<!--
+
+
+
+    Загрузка нескольких файлов на сервер
+    https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch
+
+    https://www.npmjs.com/package/express-form-data
+
+    https://developer.mozilla.org/ru/docs/Web/API/File_API/Using_files_from_web_applications#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80_%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B0_%D1%84%D0%B0%D0%B9%D0%BB%D0%B0_%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE_%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D0%B5%D0%BC
+-->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               

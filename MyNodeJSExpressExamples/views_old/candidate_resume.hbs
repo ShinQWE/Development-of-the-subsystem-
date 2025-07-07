@@ -1,0 +1,267 @@
+<link rel="stylesheet" href="css/resume.css" />
+<script src="js/Cand_script_resume.js"></script>
+
+<div class='grid_out'>
+    <div>
+        <span class="Title"> Заполнение резюме соискателя</span>   
+
+        <div style="overflow-x: hidden; overflow-y: auto; border: solid thin aliceblue; max-height: 70vh; width: 100%;">
+
+            <div class="outer">
+                <a href="javascript:f1('frm1')" class="innerTitle">
+                    <span id="frm1_" class="innerTitle_">▷</span>&nbsp;&nbsp; Идентификационные и контактные данные
+                </a>        <br>
+                <form    method="post" class="gr hide" id="frm1" name="frm1">
+                    <div>Фамилия</div>               <div><input type="text" name="Cand_Family" id="Cand_Family" value="Иванов" /></div>
+                    <div>Имя</div>                         <div> <input type="text" name="Cand_Name" id="Cand_Name" value="Иван" /></div>
+                    <div>Отчество</div>               <div><input type="text" name="Cand_SurName" id="Cand_SurName" value="Иванович" /></div>
+                    <div>Пол (М / Ж)</div>          <div><input type="text" name="Cand_Gender" value=" " /></div>
+                    <div>Дата рождения              </div> <div><input type="date" name="Cand_Birthday" id="Cand_Birthday" /></div>
+                    <div>Адрес эл. почты            </div> <div><input type="text" name="Cand_Email" id="Cand_Email" value="ivanov@gmal.com" /></div>
+                    <div>Телефон                            </div> <div><input type="text" name="Cand_Phone" id="Cand_Phone" value="7 924 123 44 55" /></div>
+                </form>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm2')" class="innerTitle">
+                    <span id="frm2_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные об основном образовании
+                </a>        <br>
+                <form  method="post" class="gr hide" id="frm2" name="frm2">
+                    <div>Вуз</div>
+                    <div>   <input type="text" name="Cand_Institute" id="Cand_Institute" value="МГУ им. адм. Невельского Г.И." />
+                    </div>
+                    <div>Курс (1 - 6)</div>        <div><input type="text" name="Cand_Year" value=" " /></div>
+                    <div>Факультет</div>
+                    <div>   <input type="text" name="Cand_Faculty" id="Cand_Faculty" onclick="Faculty()" value=" ">*
+                                 <br> <select id="sel1" name="sel1" class="hide opt1" style="position:relative; left:0px"></select>
+                    </div>
+                    <div>Специализация</div>
+                    <div> <textarea row="2" name="reply1Cand_" id="Cand_Specialization" onclick="FacSpecialization()"></textarea>*
+                               <br> <select id="sel2" name="sel2" class="hide opt1" style="position:relative; left:0px">
+                               </select>
+                    </div>
+                    <div>Уровень образования</div>
+                    <div>               <input type="text" name="Cand_Level" id="Cand_Level" value=" ">     </div>
+                    <div></div>    <div> <input type="submit" id="sbm_frm2" hidden /></div>
+                </form>
+            </div>
+
+               <div class="outer">
+                <a href="javascript:f1('frm3')" class="innerTitle">
+                    <span id="frm3_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные о дополнительном образовании
+                </a>            <br>
+                <form  method="post" class="gr hide" id="frm3" name="frm3">
+                    <div>Вуз</div>   <div><input type="text" name="Cand_Institute__" value="" onchange="ShowPos_AddEdu()" /></div>
+                    <div>Период обучения</div>
+                    <div> <input type="date" class="shortDate" name="Cand_Date1__" id="Cand_Date1__" value="" disabled />   &nbsp;  -  &nbsp;
+                               <input type="date" class="shortDate" name="Cand_Date2__" id="Cand_Date2__" value="" disabled />
+                    </div>
+                    <div>Специализация</div>
+                    <div><textarea rows="2" name="Cand_Specialization_" id="Cand_Specialization_" disabled></textarea></div>
+
+                    <div id="INSERT_1"></div>
+                    <div><a href="javascript: AddNewPos_AddEdu()">  Добавить строки для ввода новых данных </a> </div>
+                </form>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm4')" class="innerTitle">
+                    <span id="frm4_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные о дополнительной подготовке
+                </a>                <br>
+                <form class="gr hide" id="frm4" name="frm4">
+                    <div>Навык работы с ПК </div>
+                    <div>    <input type="text" name="Cand_Skill" id="Cand_Skill" value=" " onclick="PC_Skill()" />*
+                                 <br> <select id="sel3" name="sel3" class="hide opt1" style="position:relative; left:0px">
+                                            <option value="Выбрать из списка" selected>Выбрать из списка</option>
+                                           <option value="Слабый уровень">Слабый уровень</option>
+                                           <option value="Средний уровень">Средний уровень</option>
+                                          <option value="Уверенное владение">Уверенное владение</option>
+                        </select>
+                    </div>
+                    <div>Владение специали-зированным ПО</div>
+                    <div>   <textarea rows="2" name="Cand_Softl"> </textarea>       </div>
+                    <div>Знание иностранных языков </div>
+                    <div><input type="text" name="Cand_Lang" id="Cand_Lang" value=" " /></div>
+                    <div>Уровень владения</div>
+                    <div> <input type="text" name="Cand_Lang_Level" id="Cand_Lang_Level" value=" " onclick="Lang_Skill()" />*
+                               <br> <select id="sel4" name="sel4" class="hide opt1" style="position:relative; left:0px">
+                               <option value="Выбрать из списка" selected>Выбрать из списка</option>
+                                <option value="A1 (начальный)">A1 (начальный)</option>
+                               <option value="A2 (элементарный)">A2 (элементарный)</option>
+                               <option value="B1 (средний)">B1 (средний)</option>
+                               <option value="B2 (средне-продвинутый)">B2 (средне-продвинутый)</option>
+                               <option value="C1 (продвинутый)">C1 (продвинутый)</option>
+                               <option value="C2 (в совершенстве)">C2 (в совершенстве)</option>
+                           </select>
+                    </div>
+                    <div>Дополнительные навыки</div>
+                    <div><textarea rows="2" cols="40" name="Cand_AuxSkill"></textarea></div>
+                </form>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm5')" class="innerTitle">
+                    <span id="frm5_" class="innerTitle_">▷</span>&nbsp;&nbsp; Дополнительные сведения
+                </a>              <br>
+                <form class="gr hide" id="frm5" name="frm5">
+                    <div>Область интересов</div>
+                    <div><textarea rows="2" cols="40" name="Cand_Interest"></textarea></div>
+                    <div> Сопроводительное письмо<a href="javascript: IncreeseField()">▽ </a></div>
+                    <div><textarea rows="2" cols="45" name="Cand_AddLetter" id="Cand_AddLetter"></textarea></div>
+                </form>
+                <article class="gr hide" id="frm50" name="frm50">
+                    <div>Фото соискателя</div>
+                    <div>
+                        <form action="/upload_photo" method="post" enctype="multipart/form-data">
+                           <input type="text" id="Cand_File_photo" name="Cand_File_photo" onclick="AddNewFile(-1)" value=" ">
+                            <input type="file" id="Cand_File_hidden_photo" name="Cand_File_hidden_photo" style="display:none">
+                            <input type="submit" value="Send" id="savePhoto"/>
+                        </form>
+                  </div>
+                    <div><a href="javascript:ShowFile('photo') " id='image_preview_left_photo' class='hide'> ▽ </a></div>
+                    <div><img id="image_preview_photo" style="max-height: 200px; max-width: 200px;">      </div>
+
+                    <div>Фото документа 1</div>
+                    <div>  <input type="text" id="Cand_File_0" name="Cand_File_0" onclick="AddNewFile(0)" value=" ">
+                                <input type="file" id="Cand_File_hidden_0" name="Cand_File_hidden_0" style="display:none">
+                    </div>
+                    <div> <a href="javascript:ShowFile(0) " id='image_preview_left_0' class='hide'> ▽ </a></div>
+                    <div> <img id="image_preview_0" style="max-height: 200px; max-width: 200px;">                        </div>
+
+                    <div id="INSERT"></div>
+                    <div><a href="javascript:  AddNewPospositionsFile( )">  Добавить строки для ввода новых файлов </a> <br>
+                              <a href="javascript: PostFiles()  ">  Сохранить графические файлы  </a> </div>
+
+                </article>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm6')" class="innerTitle">
+                    <span id="frm6_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные о последнем месте работы по специальности
+                </a>              <br>
+                <div class="gr hide" id="frm6">
+                    <div>Предприятие </div>   <div><input type="text" name="Cand_Company" value=" " /></div>
+                    <div>Должность </div>   <div><input type="text" name="Cand_Job" value=" " /></div>
+                    <div>Регион </div>   <div><input type="text" name="Cand_Region" value=" " /></div>
+                    <div>Город </div>   <div><input type="text" name="Cand_City " value=" " /></div>
+                    <div>Дата приема /увольнения</div>
+                    <div>  <input type="date" class="shortDate" name="Cand_Date3" id="Cand_Date3" value="" />  &nbsp;-&nbsp;
+                               <input type="date" class="shortDate" name="Cand_Date4" id="Cand_Date4" value="" />
+                    </div>
+                </div>
+            </div>
+
+              <div class="outer">
+                <a href="javascript:f1('frm7')" class="innerTitle">
+                    <span id="frm7_" class="innerTitle_">▷</span>&nbsp;&nbsp; Деловые и личностные качества
+                </a>              <br>
+                <div class="gr hide" id="frm7">
+                    <div>Отметьте качества, <br>которыми на Ваш <br>взгляд,  Вы обладаете</div>
+                    <table id="tbl1">
+                        <tr>  <td><input type="checkbox" name="q1" id="q1" value="1"> </td><td>Обучаемость    </td>
+                        </tr>
+                        <tr>  <td><input type="checkbox" name="q2" id="q2" value="2"> </td>
+                                  <td>Адаптация к информационным системам    </td>
+                        </tr>
+                        <tr>  <td><input type="checkbox" name="q3" id="q3" value="3"> </td>
+                                <td>Умение работать с большим количеством информации    </td>
+                        </tr>
+                        <tr>  <td><input type="checkbox" name="q4" id="q4" value="4"> </td>
+                                  <td>Умение работать в команде    </td>
+                        </tr>
+                        <tr>    <td><input type="checkbox" name="q5" id="q5" value="5"> </td>
+                                  <td>Инициативность   </td>
+                        </tr> 
+                        <tr>   <td><input type="checkbox" name="q6" id="q6" value="6"> </td>
+                                  <td>Стремление к повышению профессио - <br>нального уровня </td>
+                        </tr>
+                        <tr>   <td><input type="checkbox" name="q7" id="q7" value="7"> </td>
+                                  <td>Исполнительность, ответственность </td>
+                        </tr>
+                        <tr>    <td><input type="checkbox" name="q8" id="q8" value="8"> </td>
+                                   <td>Самостоятельность    </td>
+                        </tr>
+                        <tr>    <td><input type="checkbox" name="q9" id="q9" value="9"> </td>
+                                   <td>Коммуникабельность,  уравновешенность, вежливость   </td>
+                        </tr>
+                        <tr>   <td><input type="checkbox" name="q10" id="q10" value="10"> </td>
+                                  <td>Принципиальность  </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm8')" class="innerTitle">
+                    <span id="frm8_" class="innerTitle_">▷</span>&nbsp;&nbsp; Ключевые слова
+                </a>              <br>
+                <div class="gr hide" id="frm8">
+                    <div>Ключевые слова для поиска вакансий</div>
+                    <div><textarea rows="2" cols="40" name="Cand_Keys"></textarea></div>
+                </div>
+            </div>
+
+            <div class="outer">
+                <a href="javascript:f1('frm9')" class="innerTitle">
+                    <span id="frm9_" class="innerTitle_">▷</span>&nbsp;&nbsp; Даты создания и последней редакции резюме
+                </a>              <br>
+                <div class="gr hide" id="frm9">
+                    <div></div>
+                    <div>
+                        <input type="date" class="shortDate" name="Cand_Date5" disabled />  &nbsp;-&nbsp;
+                        <input type="date" class="shortDate" name="Cand_Date6" disabled />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="outer1">
+            <a href="javascript: SaveData()" style="padding-left:70px">  Сохранить данные   </a><br>
+        </div>
+    </div>
+
+    <div>
+        <span class="Title">  Справка по заполнению резюме </span><br>
+        <a href="javascript:f1('pp1')" class="innerTitle">
+            <span id="pp1_" class="innerTitle">◤</span>&nbsp;&nbsp; Показать / скрыть
+        </a>
+        <div class="note_border">
+            <div id="pp1" style="width:98%">текст справки</div>
+        </div>
+    </div>
+    <br>
+</div>
+<span id="N_BACK">{{N_BACK}}</span>
+
+<script>
+
+    var client_login = '';
+    var client_ind = '';
+    var res = '';
+    var n_back;
+    window.onload = function () {
+        client_login = document.getElementById("LOGIN").innerText;
+        client_ind = document.getElementById("INDEX").innerText;
+        document.getElementById("user_id").innerText = "Клиент: " + client_login;
+        res = document.getElementById("N_BACK").innerText;
+        n_back = Number(res);
+        alert('n_back =' + n_back + '  n_back>= 1  = ' + (n_back>= 1));
+        if (n_back >= 1) {
+            window.history.go(-(n_back));
+        }
+    }
+    f1_cand();                               //  получить меню 2-го уровня
+    f4_cand_menuWorking();
+    f2_cand_select("resume_Cand");
+
+    PrepVar_1();
+    NodeText().then((data) => {
+        document.querySelector("#pp1").innerHTML = data;
+        modal = document.querySelector('#modal');       //            alert("modal=" + modal);
+        modal.addEventListener('click', function (e) {      /*   alert("modalClick");*/  e.stopPropagation(); });
+    });
+    
+</script>
+
+

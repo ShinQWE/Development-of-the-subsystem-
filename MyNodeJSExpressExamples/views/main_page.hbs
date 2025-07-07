@@ -1,0 +1,74 @@
+<div id="header1">    {{> header1}}        </div>
+<link rel="stylesheet" href="css/personalArea.css" />
+
+<br>
+<div class="personal_area_grid">
+    <div></div>
+    <div>
+        <h3 class="personal_area_h3 ">Регистрация нового клиента</h3>                              <!--  form class="mp_frm" id="frm_reg"  -->
+        <div class="personal_area_frm">
+                        <label> Соискатель  &nbsp;  </label>
+                       <input type="radio" name="regNew" id="cand"> 
+                        <label> &nbsp; &nbsp;Работодатель &nbsp;    </label>
+                        <input type="radio" name="regNew" id="empl">
+                        <label> Логин: </label>  <br>
+                        <input type="text" name="login" id="login" value="" /><br>
+                        <label> Пароль:</label>  <br>
+                        <input type="password" name="pswrd" id="pswrd" value="" /><br>
+                        <label> Подтверждение пароля : </label>  <br>
+                        <input type="password" name="cnfrm" id="cnfrm" value="" /><br>
+                        <br>
+                        <input type="button"  onclick="f_home_1()" value=" Передача данных" >
+                        <br><br>
+                        <input type="checkbox" onclick="f_home_0()"> <label>Показывать пароль</label><br>                           <!--  /!--form  -->
+</div>
+        <div style=" font: 400 1.3rem calibri " id="res_fetch">
+            <br>    <p> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function f_home_0()                                                                                               // показывать/скрывать пароли
+    {
+        let tp = document.getElementById("pswrd").getAttribute("type");
+        if (tp == "password") {
+            document.getElementById("pswrd").setAttribute("type", "text");
+            document.getElementById("cnfrm").setAttribute("type", "text");
+        }
+        else {
+            document.getElementById("pswrd").setAttribute("type", "password");
+            document.getElementById("cnfrm").setAttribute("type", "password");
+        }
+    }
+    async function f_home_1() {
+        let arg = [document.getElementById("cand").checked,
+        document.getElementById("empl").checked,
+        document.getElementById("login").value,
+        document.getElementById("pswrd").value,
+        document.getElementById("cnfrm").value];
+        let er1 = arg[0] == false && arg[1] == false || arg[2] == "" || arg[3] == "" || arg[4] == ""; // не все поля формы заполнены
+        let er2 = arg[3] != arg[4];                                                                               // пароль и подтверждение не совпадают
+        let msg = "";
+        if (er1) msg += "Не все поля формы заполнены. <br>";
+        if (er2) msg += "Пароль и подтверждение пароля не совпадают.";
+        document.getElementById("res_fetch").innerHTML = msg;     //                         alert("1  msg= " + msg);
+        if (msg != "") return;
+        {                                                                                                                   //                            alert("2  msg= " + msg);
+            let params = {};
+            if (arg[0] == true) params["client"] = "cand";
+            else params["client"] = "empl";
+            params["login"] = arg[2];
+            params["pswrd"] = arg[3];
+            let json = JSON.stringify(params); alert("JSON.stringify(params) = " + json);
+            let response = await fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: json
+            });
+            msg = await response.text();
+        //    MyCustomAlert("Ответ сервера: " + msg);
+            document.getElementById("res_fetch").innerHTML = msg;
+        }
+    }
+</script>

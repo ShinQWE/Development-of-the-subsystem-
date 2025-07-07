@@ -1,0 +1,169 @@
+<div id="header3" style="display:none">    {{> header3}}        </div>
+<div id="header2">    {{> header2}}        </div>
+<link rel="stylesheet" href="css/resume.css" />
+<script src="js/Empl_script.js"></script>
+<style>   .dis  {    color: #123; background-color:white} 
+</style> 
+
+<div class='grid_out'>
+    <div>
+        <p class="Title" style="text-align:center" id="doc_title">Просмотр и поиск вакансий &nbsp;  &nbsp; (<span id="id_all_vac">{{ALL_VAC_NUM}}</span>)</p>
+        <article class="innerTitle_" style="color:navy; padding-left:25px;">
+            <select id="sel1_vac_look" name="sel1_vac_look" class="opt1  " style="position:relative; left:0px">
+                <option value="Все"> Все</option>
+                <option value="По коду реестра МинТруда"> По коду реестра МинТруда</option>
+                <option value="По специальности              "> По специальности </option>
+            </select>
+            &nbsp;  &nbsp;
+            <a href="javascript:f_back_Cand()" id="num_vac_left"> &#9668;</a>
+            Вакансия <span id="id_vac_cur">{{VAC_NUM}}</span>  <a href="javascript:f_forward_Cand()" id="num_vac_right">  &#9658; </a>
+        </article>   <br style="line-height:3px">
+
+        <div style="overflow-x: hidden; overflow-y: auto; border: solid thin aliceblue; max-height: 70vh; width: 100%;">
+
+            <div class="outer">
+                <a href="" class="innerTitle">
+                    <span id="frm1_1_" class="innerTitle_"></span>&nbsp;&nbsp; Сведения о вакансии и условиях работы
+                </a>  <br>
+                <form class="gr" id="frm1_1">
+                    <div>Код (по Реестру Минтруда)</div>
+                    <div>                        <textarea rows="2" cols="40" id="Vac_Code" value="" disabled class="dis"></textarea>                   </div>
+                    <div>Должность</div>                                     <div> <input type="text" id="Vac_JobTitle" value="" disabled class="dis" /></div>
+                    <div>Должностные обязанности</div>         <div><textarea rows="2" cols="40" id="Vac_JobResp" value="" disabled class="dis"></textarea></div>
+                    <div>Степень занятости</div>                         <div><input type="text" id="Vac_JobType" value="" disabled class="dis" />                    </div>
+                    <div>График  работы</div>                                <div> <input type="text" id="Vac_Schedule" value="" disabled class="dis" />                  </div>
+                    <div>Зарплата </div>                                        <div>
+                        <input type="text" id="Vac_Salary" value="" style="width:202px" disabled class="dis" />
+                        &nbsp;&nbsp;    <input type="number" id="Vac_Salary_1" value="" style="width:90px" disabled class="dis" />
+                    </div>
+                    <div>Наличие соцпакета </div>                  <div>   <input type="checkbox" id="Vac_SocPack" value="" style="width:50px" disabled class="dis" /> </div>
+                </form>
+            </div>
+
+            <div class="outer">
+                <a href="" class="innerTitle">
+                    <span id="frm2_1_" class="innerTitle_"></span>&nbsp;&nbsp; Требования к соискателю
+                </a>              <br>
+                <form class="gr" id="frm2_1">
+                    <div>Уровень работы с ПК </div>                    <div> <input type="text" id="Vac_PC_Skill" value="" disabled class="dis" />                    </div>
+                    <div>Дополнительные требования</div>     <div>   <textarea rows="3" id="Vac_AddSkill" disabled class="dis"> </textarea>       </div>
+                    <div>Необходимые дело- <br>вые и личностные качества соискателя</div>
+                    <div><textarea rows="3" id="Vac_Chars" disabled value="" class="dis"> </textarea></div>
+                </form>
+            </div>
+        
+        <div class="outer">
+            <a href="" class="innerTitle">
+                <span id="frm3_1_" class="innerTitle_"></span>&nbsp;&nbsp; Информация о предприятии            </a>              <br>
+            <form class="gr" id="frm3_1">
+                <div></div> 
+                <div><textarea rows="4" id="Empl_AuxInfo"  disabled value="" class="dis"> </textarea></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="outer1">
+        <a href="javascript: AnswerVac ()" style="padding-left: 70px;" class="innerRefColor">  Откликнуться на вакансию </a><br>
+        <textarea rows="3" id="From_Cand" value="" style="width:98%; font-size:1.1rem "> Дополнительная информация от соискателя</textarea>
+    </div>
+</div>
+    <div>
+        <span class="Title" style="font-size:1em;">
+            Справка по просмотру и поиску вакансий
+        </span><br>
+        <a href="javascript:Toggle_pp1()" class="innerTitle">
+            <span id="Toggle_pp1_" class="innerTitle">◤</span>&nbsp;&nbsp; Показать / скрыть
+        </a>
+        <div class="note_border">
+            <div id="pp1" style="width:98%">текст справки</div>
+        </div>
+    </div>
+</div>
+
+ <span id="id_vac_cand" style="display:none"> {{VAC}}</span> 
+    
+
+<script>
+    async function AnswerVac()                                    // откликнуться на вакансию
+    {   let params = {};                                                     // отправка учетных данных на сервер
+        params["Cand_ID"]         = document.getElementById("header2_ind").innerHTML;
+        params["id_vac_cur"]    = document.getElementById("id_vac_cur").innerHTML;
+        params["From_Cand"]   = document.getElementById("From_Cand").innerHTML;
+        let json = JSON.stringify(params);                         alert(json);
+        let response = await fetch('/candidates_answer_vac',
+            {   method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: json
+            });
+        var msg = await response.text();                           alert(msg);
+    }
+
+        var Characters = ['Обучаемость', 'Адаптация к информационным системам', 'Умение работать с большим количеством информации',
+        'Умение работать в команде', 'Инициативность', 'Стремление к повышению профессионального уровня',
+        'Исполнительность, ответственность', 'Самостоятельность', 'Коммуникабельность, уравновешенность, вежливость'
+    ];
+    var VacArr ;
+    function CreateVacArr()
+    {   VacArr = (document.getElementById("id_vac_cand").innerHTML).split("!!!!!!");
+
+    }
+    function FillVac_Cand() {
+        var cur_num = (document.getElementById("id_vac_cur").innerHTML).trim();       // номер вакансии 
+        var vac = VacArr[cur_num-1];                               //alert (vac);     
+        var str = vac.split('◤');
+        var N = str.length;
+        var Vac_q = "";
+        for (var i = 0; i < N - 1; i++) {
+            var elem = str[i].split('▷');
+            var id_elem = elem[0].trim();
+            if (id_elem == "Vac_JobBase") continue;
+            var val = elem[1];
+            if (id_elem.includes("Vac_q")) {
+                Vac_q +=  Characters [val-1] + "\n";   continue;
+            }  
+            var obj = document.getElementById(id_elem);
+            if  (obj.tagName == "INPUT"   &&  obj.getAttribute('type') == 'checkbox' )  obj.checked = true;
+ 
+            document.getElementById(id_elem).value = val;
+            console.log("'" + id_elem + "'  -  " + document.getElementById(id_elem).value);
+        }
+        document.getElementById("Vac_Chars").value = Vac_q;
+    console.log(Vac_q);
+    }
+
+    function f_forward_Cand()
+    {    var cur_num = Number((document.getElementById("id_vac_cur").innerHTML).trim()) + 1;
+        var all_num = Number(document.getElementById("id_all_vac").innerHTML);
+        //alert("f_forward_Cand()  " + cur_num + "  " + all_num);
+        if (cur_num > all_num) { cur_num = all_num; return; }
+        document.getElementById("id_vac_cur").innerHTML = cur_num;
+        FillVac_Cand();
+    }
+    function f_back_Cand()
+    {   var cur_num = Number((document.getElementById("id_vac_cur").innerHTML).trim() ) - 1;
+        if (cur_num < 1) {   cur_num = 1; return;        }
+        document.getElementById("id_vac_cur").innerHTML = cur_num;
+        FillVac_Cand();
+    }
+
+   async function Vac_CandNoteText()
+    {    var response = await fetch('/TEXT/candVacNote.txt');
+          var text = await response.text();                                                       //console.log(text);
+          return text;
+    }
+    function Toggle_pp1()
+    {   document.getElementById("pp1").classList.toggle("hide");
+        if (document.getElementById("pp1").classList.contains("hide"))
+                             document.getElementById("Toggle_pp1_").innerText = '▷'
+        else document.getElementById("Toggle_pp1_").innerText = '◤';
+    }
+    //-------------------------------------------Действия при загрузке страницы
+
+    Vac_CandNoteText().then((data) => {
+        document.querySelector("#pp1").innerHTML = data;
+      })
+
+    CreateVacArr();
+    FillVac_Cand();
+</script>
+

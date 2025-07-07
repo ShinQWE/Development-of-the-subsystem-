@@ -1,0 +1,12 @@
+
+
+    .personal_area_grid {    display: grid;     grid-template-columns: 1fr 2fr;        margin-left: 1%;    }
+    .personal_area_h3   {      font-size: 1.3rem;        line-height: 40px;        margin-top: 20px;    color:darkblue; font:400  1.3rem calibri }
+    .personal_area_frm {    width: 300px; padding: 10px;   border: 3px solid #cdf;     border-radius: 15px;  }
+    .personal_area_frm * { font:400  1.2rem calibri; line-height: 40px  }
+    [type="text"], [type="password"], [type="button"] 
+       {  width: 96%;        padding: 2%;        border: 1px solid lightblue;        border-radius: 10px;  }
+    [type="text"]:focus, [type="password"]:focus {        outline: none;        border: 2px solid cornflowerblue    }
+    [type="button"] {        width: 100%;        color: white;        background-color: dodgerblue;        filter: contrast(250%);    }
+    .personal_area_ref {     color: darkblue;    text-decoration: none;    position: relative;    top: 1em;    }
+    .personal_area_hide {    display: none    }

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RES</title>
+    <meta charset="utf-8" />
+    <link  rel="stylesheet" href="css/resume.css"  />
+</head>
+
+<body>
+    <div class='grid_out'>
+        <div>
+            <span class="Title"> Резюме соискателя</span>
+            <div style="overflow-x: hidden; overflow-y: auto; border: solid thin aliceblue; max-height: 80vh; width: 100%;">
+
+                <div class="outer">
+                    <a href="javascript:f1('frm1')" class="innerTitle">
+                        <span id="frm1_" class="innerTitle_">▷</span>&nbsp;&nbsp; Идентификационные и контактные данные
+                    </a>        <br>
+                    <div class="gr hide" id="frm1">
+                        <div>Фамилия</div>               <div><input type="text" name="Cand_Family" value=" "/></div>
+                        <div>Имя</div>                         <div> <input type="text" name="Cand_Name" value=" "/></div>
+                        <div>Отчество</div>               <div><input type="text" name="Cand_SurName" value=" "/></div>
+                        <div>Пол (М / Ж)</div>          <div><input type="text" name="Cand_Gender" value=" "/></div>
+                        <div>Дата рождения              </div> <div><input type="date" name="Cand_Birthday" /></div>
+                        <div>Адрес эл. почты            </div> <div><input type="text" name="Cand_Email" value=" "/></div>
+                        <div>Телефон                            </div> <div><input type="text" name="Cand_Phone" value=" "/></div>
+                    </div>
+                </div>
+
+                <div class="outer">
+                    <a href="javascript:f1('frm2')" class="innerTitle">
+                        <span id="frm2_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные об основном образовании
+                    </a>        <br>
+                    <div class="gr hide" id="frm2">
+                                    <div>Вуз</div>
+                        <div>    <input type="text" name="Cand_Institute" id="Cand_Institute" value="МГУ им. адм. Невельского Г.И." />
+                        </div>
+                        <div>Курс (1 - 6)</div>        <div><input type="text" name="Cand_Year" value=" "/></div>
+                        <div>Факультет</div>
+                        <div> <input type="text"  name="Cand_Faculty" id="Cand_Faculty"   onclick="Faculty()" value=" ">*
+                               <br> <select id="sel1" name="sel1" class="hide opt1" style="position:relative; left:0px"></select>
+                        </div>
+                        <div>Специализация</div>
+                        <div>
+                            <textarea row="2" name="Cand_Specialization" id="Cand_Specialization"  onclick="FacSpecialization()"></textarea>*
+                            <br> <select id="sel2" name="sel2" class="hide opt1" style="position:relative; left:0px">
+                            </select>
+                        </div>
+                        <div>Уровень образования</div>
+                        <div>     <input type="text" name="Cand_Level" id="Cand_Level"  value=" ">     </div>
+                    </div>
+                   </div>
+
+                <div class="outer">
+                    <a href="javascript:f1('frm3')" class="innerTitle">
+                        <span id="frm3_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные о дополнительном образовании
+                    </a>            <br>
+                    <div class="gr hide" id="frm3">
+                        <div>Вуз</div>   <div><input type="text" name="Cand_Institute__" disabled  value=" "/></div>
+                        <div>Период обучения</div>
+                        <div>
+                            <input type="date" class="shortDate" disabled name="Cand_Date1__" />   &nbsp;  -  &nbsp;
+                            <input type="date" class="shortDate" disabled name="Cand_Date2__" />
+                        </div>
+                        <div>Специализация</div>
+                        <div><textarea rows="2" name="Cand_Specialization_1" disabled></textarea></div>
+                        <div></div>
+                        <div><a href="javascript: AddNewPos('Cand_Specialization_')">  Добавить строки для ввода новых данных </a> </div>
+                    </div>
+                </div>
+
+                <div class="outer">
+                    <a href="javascript:f1('frm4')" class="innerTitle">
+                        <span id="frm4_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные о дополнительной подготовке
+                    </a>                <br>
+                    <div class="gr hide" id="frm4">
+                        <div>Навык работы с ПК </div>   
+                        <div> <input type="text" name="Cand_Skill" id ="Cand_Skill" value=" " onclick="PC_Skill()"/>*
+                            <br> <select id="sel3" name="sel3" class="hide opt1" style="position:relative; left:0px">
+                                     <option value="Выбрать из списка" selected>Выбрать из списка</option>
+                                             <option value="Слабый уровень">Слабый уровень</option>
+                                             <option value="Средний уровень">Средний уровень</option>
+                                             <option value="Уверенное владение">Уверенное владение</option>
+                                 </select> </div>
+                        <div>Владение специали-зированным ПО</div>
+                        <div>   <textarea rows="2" name="Cand_Softl"> </textarea>       </div>
+                        <div>Знание иностранных языков </div>   
+                        <div><input type="text" name="Cand_Lang"  id="Cand_Lang" value=" "/></div>
+                        <div>Уровень владения</div>   
+                        <div><input type="text" name="Cand_Lang_Level" id="Cand_Lang_Level" value=" " onclick="Lang_Skill()" />*
+                                   <br> <select id="sel4" name="sel4" class="hide opt1" style="position:relative; left:0px">
+                                              <option value="Выбрать из списка" selected>Выбрать из списка</option>
+                                              <option value="A1 (начальный)">A1 (начальный)</option>
+                                              <option value="A2 (элементарный)">A2 (элементарный)</option>
+                                              <option value="B1 (средний)">B1 (средний)</option>
+                                              <option value="B2 (средне-продвинутый)">B2 (средне-продвинутый)</option>
+                                              <option value="C1 (продвинутый)">C1 (продвинутый)</option>
+                                              <option value="C2 (в совершенстве)">C2 (в совершенстве)</option>
+                                              </select> </div>
+                        <div>Дополнительные навыки</div>
+                        <div><textarea rows="2" cols="40" name="Cand_AuxSkill"></textarea></div>
+                    </div>
+                </div>
+
+                <div class="outer">
+                    <a href="javascript:f1('frm5')" class="innerTitle">
+                        <span id="frm5_" class="innerTitle_">▷</span>&nbsp;&nbsp; Дополнительные сведения
+                    </a>              <br>
+                    <div class="gr hide" id="frm5">
+                        <div>Область интересов</div>
+                        <div><textarea rows="2" cols="40" name="Cand_Interest"></textarea></div>
+                        <div>Пожелания</div>
+                        <div><textarea rows="2" cols="40" name="Cand_Wishes"></textarea></div>
+                        
+                        <div> Файл 1</div>
+                        <div><input type="text" id="Cand_File_0" name="Cand_File_0" onclick="AddNewFile(0)"  value =" ">
+                                   <input type="file" id="Cand_File_hidden_0" name="Cand_File_hidden_0"  style="display:none">
+                        </div>
+                        <div ><a href="javascript:ShowFile(0) " class="hide" id="image_preview_left_0">▽ </a></div>
+                        <div ><img id="image_preview_0" style="max-height: 200px; max-width: 200px;">                        </div>
+                      
+                        
+                        <div id="INSERT"></div>
+                        <div><a href="javascript:  AddNewPospositionsFile( )">  Добавить строки для ввода новых файлов </a> </div>
+                    </div>
+                </div>
+
+                <div class="outer">
+                    <a href="javascript:f1('frm6')" class="innerTitle">
+                        <span id="frm6_" class="innerTitle_">▷</span>&nbsp;&nbsp; Данные о предыдущем месте работы
+                    </a>              <br>
+                    <div class="gr hide" id="frm6">
+                        <div>Предприятие </div>   <div><input type="text" name="Cand_Company" value=" "/></div>
+                        <div>Должность </div>   <div><input type="text" name="Cand_Job" value=" "/></div>
+                        <div>Регион </div>   <div><input type="text" name="Cand_Region" value=" "/></div>
+                        <div>Город </div>   <div><input type="text" name="Cand_City " value=" "/></div>
+                        <div>Дата приема /увольнения</div>
+                        <div>
+                            <input type="date" class="shortDate" name="Cand_Date3" />  &nbsp;-&nbsp;
+                            <input type="date" class="shortDate" name="Cand_Date4" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="outer">
+                    <a href="javascript:f1('frm7')" class="innerTitle">
+                        <span id="frm7_" class="innerTitle_">▷</span>&nbsp;&nbsp; Ключевые слова
+                    </a>              <br>
+                    <div class="gr hide" id="frm7">
+                        <div>Ключевые слова для поиска вакансий</div>
+                        <div><textarea rows="2" cols="40" name="Cand_Keys"></textarea></div>
+                    </div>
+                </div>
+            </div>
+            <div class="outer1">
+                <a href="javascript: SaveData()" style="padding-left:70px">  Сохранить данные   </a>
+            </div>
+        </div>
+
+        <div>
+            <span class="Title">  Справка по заполнению резюме </span><br>
+            <a href="javascript:f1('pp1')" class="innerTitle">
+                <span id="pp1_" class="innerTitle">◤</span>&nbsp;&nbsp; Показать / скрыть
+            </a>
+            <div class="note_border">
+                          <div id="pp1" style="width:98%">текст справки</div>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
+    <script>
+
+ //-----------------------------------Сокрытие/отображение разделов резюме----------------------------------------
+  function f1(id) {                                         
+            document.getElementById(id).classList.toggle('hide');
+            var id_ = id + '_';
+            if (document.getElementById(id_).innerText === '▷')
+                document.getElementById(id_).innerText = '◤';
+            else document.getElementById(id_).innerText = '▷';
+        }
+ //----------------------------------Раздел 2-Вуз, факультет, специализация, уровень----------------------------------------
+        var VUZ = document.getElementById('Cand_Institute');
+        var FAC = document.getElementById('Cand_Faculty');
+     
+      FAC.addEventListener('focus', () => {                                              // поле  Cand_Faculty получает фокус
+              if (VUZ.value != 'МГУ им. адм. Невельского Г.И.')                //  если VUZ != МГУ, удалить символы '*'
+              {  var v1 = document.getElementById('Cand_Faculty').parentElement;
+                  v1.innerHTML = (v1.innerHTML).replace('*', '');
+                  v1 = document.getElementById('Cand_Specialization').parentElement;
+                  v1.innerHTML = (v1.innerHTML).replace('*', '');
+              }
+              else {  if ( json_ === null )  ListFaculties();   }                                      // иначе прочитать списки факультетов, спец,
+        });
+        
+        var selFac = document.querySelector('#sel1');
+        var json_ = null;                                                         // Чтение списка факультетов MГУ из candResumeFaculties.txt
+        var N = 0;
+
+  async function ListFaculties() {                                                               // получение списка факультетов
+            var response = await fetch('/candResumeFaculties.txt');     // чтение текстового файла
+            var text = await response.text();                                                   // console.log(text);                 alert (text);
+            json_ = JSON.parse(text);                                                              // преобразование   текстовой строки в JSON
+            console.log(json_);
+            N = json_.Faculties.length;                                                            //alert(json_.Faculties[0].Faculty);
+                                                                                                                         // формирование  <option> для  select
+            var select_options = "<option selected value='Выбрать из списка' >Выбрать из списка</option>";
+            for (var i = 0; i < N; i++)
+                select_options += "<option value='" + json_.Faculties[i].Faculty + "'> " + json_.Faculties[i].Faculty +
+                    "</option>";
+            selFac.innerHTML = select_options;             // добавление набора <option> в select
+        }
+
+        var sel1_index = 0;                                                 //№ выбранного факультета
+        var obj_fac = null;
+        let selSpec = document.querySelector('#sel2');
+        function Faculty() {                                                  //Функция-обработчик установки курсора в поле Cand_Faculty
+//            console.log("Faculty");
+           selFac.classList.remove("hide");                                                                   // показ списка select
+           selFac.addEventListener('change', function (e) {                                      // выбор элемента списка
+                                 let facName = e.target.value;
+                                sel1_index = selFac.selectedIndex - 1;                                                     // индекс эл-та  alert("index = " + sel1_index);
+                                selFac.classList.add("hide");                                                                       //сокрытие select
+                                document.querySelector('#Cand_Faculty').value = facName;          // элемент списка -> поле Cand_Faculty
+                                                           // создать список  специализаций для выбранного факультета
+                                 var select_options = "<option selected value='Выбрать из списка' >Выбрать из списка</option>";
+                                  obj_fac = json_.Faculties[sel1_index];
+                                  var N1 = obj_fac.Specializations.length;                                                     // число специал. alert("n1 = " + N1);
+                                                           // формирование  <option> для  select
+                                      for (var i = 0; i < N1; i++)
+                                               select_options += "<option value='" + obj_fac.Specializations[i].Name + "'> " +
+                                                                                    obj_fac.Specializations[i].Name + "</option>";
+                                 selSpec.innerHTML = select_options;                                                              // добавление набора <option> в select
+                            });
+        }
+        var sel2_index = 0;                                                                                        //№ выбранной специализации
+        function FacSpecialization()                        //Функция - обработчик установки курсора в поле Cand_Specialization
+        {
+             selSpec.classList.remove("hide");                                                                                      // показ select
+            selSpec.addEventListener('change', function (e) {                                                        // выбор элемента списка
+                                let specName = e.target.value;
+                               sel2_index = selSpec.selectedIndex - 1;                                                          //alert("index = " + sel2_index);
+                               selSpec.classList.add("hide");                                                                           //сокрытие select
+                               document.querySelector('#Cand_Specialization').value = specName;   // элемент списка -> поле Cand_Specialization
+                                var level_ = obj_fac.Specializations[sel2_index].Level;                               // уровень данной специализации
+                                document.querySelector('#Cand_Level').value = level_;                            // уровень -> поле Cand_Level
+            });
+        }
+//-----------------------------------Раздел- 3-Доп. образование------------------------------------------------------------
+        
+//-----------------------------------Раздел- 4-Доп. подготовка ----------------------------------------------------
+        var selSkill = document.querySelector('#sel3');
+function PC_Skill() {
+            selSkill.classList.remove("hide");                                                                                      // показ select
+            selSkill.addEventListener('change', function (e) {                                                         // выбор элемента списка
+                        var skill = e.target.value;
+                        selSkill.classList.add("hide");                                                                                   //сокрытие select
+                       document.querySelector('#Cand_Skill').value = skill;                                          // уровень -> поле Cand_Skill
+                     });
+ }
+var langSkill = document.querySelector('#sel4');
+function Lang_Skill() {
+              langSkill.classList.remove("hide");                                                                                      // показ select
+              langSkill.addEventListener('change', function (e) {                                                         // выбор элемента списка
+                      var skill = e.target.value;
+                      langSkill.classList.add("hide");                                                                                   //сокрытие select
+                     document.querySelector('#Cand_Lang_Level').value = skill;                                          // уровень -> поле Cand_Lang_Level
+              });
+}
+//-----------------------------------загрузка файлов соискателя------------------------------------------------------------
+        var Client_Files = new Array(5);
+        var Client_Files_index = 0;
+
+        function AddNewFile(num)
+        {   if (num > 4) return;
+             var fName = document.getElementById("Cand_File_" + num).value;
+              if (fName != null && fName != " ")
+              {  let isDel = confirm( "Вы хотите удалить файл  "+ fName +"?" );     //                  alert(isDel);
+                  if (isDel == true) document.getElementById("Cand_File_" + num).value = " ";
+                  document.getElementById('image_preview_' + num).src = "";
+                  document.getElementById('image_preview_left_' + num).classList.add("hide");
+              }
+              document.getElementById("Cand_File_hidden_" + num).click();
+             //alert("LoadFile(" + num + ")");
+             var input = document.getElementById("Cand_File_hidden_" + num);
+             input.addEventListener('change', function ()
+             {   var file = input.files[0];
+                //alert(file.Name);
+                   var reader = new FileReader();
+                   reader.onloadend = function ()
+                   {  Client_Files[num] = reader.result;
+                       if (num == Client_Files_index)            Client_Files_index++;                                  //alert(reader.result);
+                       document.getElementById('image_preview_' + num).src = Client_Files[num];
+                       document.getElementById('Cand_File_' + num).value = file.name;
+                       document.getElementById('image_preview_left_' + num).classList.remove("hide");
+                    };
+                     if (file) reader.readAsDataURL(file);
+            });
+        }
+            function ShowFile(num)                          //показать/скрыть изображение
+            {  var objImage = document.getElementById('image_preview_' + num);
+                if (objImage.src.substring(0, 4) === 'data') objImage.src = "";
+                 else objImage.src = Client_Files[num];
+             }
+//----------------------Добавление новых элементов  для чтения граф. файлов-----------------------------
+        var ins = document.getElementById("INSERT");
+        var parent = ins.parentNode;
+        const regExpr = /@/g;
+        var str1 = "Файл ";
+        var str2 = "<input type='tex' id='Cand_File_@' name='Cand_File_@' onclick='AddNewFile(@)' value =' '>  " +
+                           "<input type='file' id='Cand_File_hidden_@' name='Cand_File_hidden_@' style='display:none'>";
+        var str3_1 = "<a href='javascript:ShowFile(@)' style='hide' id='image_preview_left_";
+        var str3_2 = "'  class='hide' >▽</a>";
+        var str4 = "<img id='image_preview_@' style='max-height: 200px; max-width: 200px;'> ";   
+ function AddNewPospositionsFile()
+ {                                            // добавление 4 элементов div 
+          if (Client_Files_index - 1 < 0) { alert("Не выбрано ни одного файла"); return; }
+          const withExpr = '' + Client_Files_index ;
+           var d1 = document.createElement("div");
+            var result = str1 + (Client_Files_index + 1);         d1.innerHTML = result; parent.insertBefore(d1, ins);
+            var d2 = document.createElement("div");
+                     result = str2.replace(regExpr, withExpr);    d2.innerHTML = result;        parent.insertBefore(d2, ins);
+            var d3 = document.createElement("div");
+            var str3 = str3_1 + Client_Files_index + str3_2;
+                       result = str3.replace(regExpr, withExpr);     d3.innerHTML = result;        parent.insertBefore(d3, ins);
+            var d4 = document.createElement("div");
+                      result = str4.replace(regExpr, withExpr);       d4.innerHTML = result;         parent.insertBefore(d4, ins);
+ }
+
+ //-------------------Сохранние данных-----------------------------------------------------------------------------
+        function SaveData() { alert("SaveData"); }
+
+       //-------------------Прочитать текст справки-----------------------------------------------------------------------------
+
+       var  modal = null;
+       var close = null;
+         async function NodeText() {
+            var response = await fetch('/candResumeNote2.txt');
+            var text = await response.text();               //            console.log (text);
+         //    modal = document.querySelector('#modal');
+            return text;
+        }
+
+
+
+        function ShowCEFR() {
+            //alert("ShowCEFR()");
+            alert("modal.classList.contains('display_none')  = " + modal.classList.contains('display_none'));
+            modal.classList.remove("display_none");
+            alert("modal.classList.contains('display_none')  = " + modal.classList.contains('display_none'));
+            modal.classList.add        ("display_block");
+            alert("modal.classList.contains('display_block')  = " + modal.classList.contains('display_block'));
+                close = document.querySelector('.close');
+            close.addEventListener('click', () => {  /*alert('close');   */    modal.classList.remove("display_block");
+                                                                                                                           modal.classList.add("display_none");    });
+        };
+        //window.onclick = function (event) { if (event.target == modal) { modal.style.display = 'none'; }      };
+     //------------------------------------------------------------------------------------------------
+        NodeText().then((data) =>
+                                    {      document.querySelector("#pp1").innerHTML = data;
+                                            modal = document.querySelector('#modal');       //            alert("modal=" + modal);
+            modal.addEventListener('click', function (e) { alert("modalClick"); e.stopPropagation(); });          
+                                    }  );
+     //------------------------------------------------------------------------------------------------
+    </script>
+
+</body>
+</html>

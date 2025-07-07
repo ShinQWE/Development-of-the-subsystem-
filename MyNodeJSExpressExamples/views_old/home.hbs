@@ -1,0 +1,78 @@
+   <div id="header1">    {{> header1}}        </div>
+
+    <style>
+        * {  font: 400 19px calibri;             line-height: 40px        }
+        h3  {   font-size: 1.3rem;width:300px; margin:auto;       }
+      .frm  {  width: 300px;  margin:auto;    padding:10px; border: 3px solid  #cdf;
+                    border-radius:15px;    }
+        [type="text"], [type="password"] ,[type="button"]{  width: 96%;   padding: 2%;
+            border: 1px solid lightblue;            border-radius: 10px; }
+      label, input {   line-height: 40px        }
+        [type="text"]:focus, [type="password"]:focus {   outline: none;   border: 2px solid cornflowerblue
+        }
+        [type="button"] {  width: 100%;  color: white;     background-color:dodgerblue ;    filter: contrast(250%);     }
+    </style>
+             <br> 
+            <h3>Регистрация нового клиента</h3>
+            <form class="frm" method="post" id="frm_reg">
+                Соискатель      &nbsp;<input type="radio" name="regNew" id="cand"> &nbsp; &nbsp;
+                Работодатель &nbsp;<input type="radio" name="regNew" id="empl">
+                <label> Логин: </label>  <br>
+                <input type="text" name="login" id="login" value="" /><br>
+                <label> Пароль:</label>  <br>
+                <input type="password" name="pswrd" id="pswrd" value="" /><br>
+                <label> Подтверждение пароля : </label>  <br>
+                <input type="password" name="cnfrm" id="cnfrm" value="" /><br>
+                <br>
+                <input type="button" value="Передача данных" onclick="f_home_1()" />
+                <!--  input type="submit" value="Передача данных"  id="sbmt" / -->
+            </form>
+            <div style="width:300px; margin:auto">  <input type="checkbox"  onclick="f_home_0()"> Показывать пароль<br>
+            <p id="error" style="line-height:25px;"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</p>
+            </div>
+
+     <script>
+     function f_home_0()
+     {  let tp = document.getElementById("pswrd").getAttribute("type");
+         if (tp == "password") {   document.getElementById("pswrd").setAttribute("type", "text"); 
+                                                       document.getElementById("cnfrm").setAttribute("type", "text");     }
+         else                                 {  document.getElementById("pswrd").setAttribute("type", "password");
+                                                     document.getElementById("cnfrm").setAttribute("type", "text");  }  
+     }
+      async function  f_home_1()
+      {
+          let arg =
+              [ document.getElementById("cand").checked,
+               document.getElementById("empl").checked,
+               document.getElementById("login").value,
+               document.getElementById("pswrd").value,
+               document.getElementById("cnfrm").value        ];
+          let er1 = 
+                      arg[0] == false && arg[1] == false  ||
+              arg[2] == "" || arg[3] == "" || arg[4] == "";
+          let er2 = arg[3] != arg[4] ;  
+                       alert(arg + "\n"+  er1 + "\n" + er2);
+          
+                  let msg = "";
+                  if (er1) msg += "Не все поля формы заполнены. <br>";
+                  if (er2) msg += "Пароль и подтверждение пароля не совпадают.";
+                  document.getElementById("error").innerHTML = msg;
+          if (msg == "") {
+              let params = {};
+              if (arg[0] == true) params["client"] = "cand";
+              else params["client"] = "empl";
+              params["login"]    = arg[2];
+              params["pswrd"] = arg[3];
+              let json = JSON.stringify(params);
+              alert(json);
+              let response = await fetch('/', 
+                  {  method: 'POST', 
+                      headers: { "Content-Type": "application/json" },
+                      body: json                  });
+              msg = await response.text();
+              //msg = "Сохранение данных успешно."; 
+              document.getElementById("error").innerHTML = msg;
+           }   
+      }
+          </script>
+

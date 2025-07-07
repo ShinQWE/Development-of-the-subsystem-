@@ -1,0 +1,55 @@
+<style>
+    .header2_div1 {  display: grid;  grid-template-columns: 35px 350px auto 60px 200px 40px;
+                                     grid-template-rows: 35px;  line-height: 25px;
+                                     font: 400 1.2rem Calibri; color: #345;   background-color: #eee;
+                                     border: 1px solid #ddd;  }
+    .menuCand {        line-height: 25px;        font: 400 1.1rem Calibri; 
+        background-color: #eee;        padding-left: 90px;        border-color: red
+                          }
+    .Choosed {  text-decoration: underline; font-size: 1.08em;  color: purple;    }
+    a { text-decoration: none;       color: darkgray;    }
+    a .disabled {  pointer-events: none;   cursor: pointer;   color: #aaa;
+        }     /* неактивная серая ссылка, курсор - стрелка */
+</style>
+<div class="header2_div1">  
+    <div>   <img src="fav_48.ico" width="35" height="35"> </div>
+    <div style="text-align:center">  Личный кабинет соискателя    </div>
+    <div>  </div>
+    <div>  Логин  </div>
+    <div id="header2_log"> {{LOGIN}} </div>    <div id="header2_ind"> {{INDEX}} </div>
+
+
+</div>
+    <div class="menuCand">
+        <a href="/" id="home_Cand"> Главная </a> |
+        <a  id="resume_Cand">  Резюме  </a> |
+        <a  id="look_Cand"      >  Просмотр и поиск вакансий  </a> |
+        <a id="search_Cand"  style="display:none">  Поиск вакансий </a> 
+        <a  id="history_Cand"  > История    </a> |
+    </div>
+
+<script>
+    const MENU = document.querySelector('.menuCand');
+    MENU.addEventListener('mouseover', (event) => { event.target.style.color = "purple";   });
+    MENU.addEventListener('mouseout', (event) => { event.target.style.color = "darkgray"; });
+    MENU.addEventListener('click', (event) =>           {  //        alert("event.target.id = " + event.target.id);
+                                                                                          f_menuCand_1(event.target.id);   });
+
+//    var ind_ = document.getElementById("header2_ind").innerHTML;
+    function f_menuCand_1(id) {
+         if (id == 'home_Cand') return;
+         var ind_ = document.getElementById("header2_ind").innerHTML;
+         ind_ = ind_.trim();
+                                                //alert('document.getElementById("header2_ind").innerText = ' + document.getElementById("header2_ind").innerHTML);
+        if ((ind_ == null || ind_ == "" || ind_ == "-1") && (id != 'look_Cand')) {
+            MyCustomAlert("Переход на запрашиваемую страницу разрешен только зарегистрированным пользователям");
+            return;
+        }
+        var                                              route = '/candidate_resume'
+                   if (id == 'look_Cand')     route = '/candidate_vacancy'
+           else if (id == 'search_Cand')  route = '/candidate_vacancy_search'
+           else if (id == 'history_Cand') route = '/candidate_history';
+          document.getElementById(id).setAttribute('href', route + '?' + ind_);   //        alert("'" + route + "'  '" + '?' + "'  '" + ind_ + "'");        alert(document.getElementById(id).getAttribute('href'));
+    }
+</script>
+

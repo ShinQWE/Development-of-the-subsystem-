@@ -1,0 +1,20 @@
+<style>
+    .menuCand {  line-height: 25px;   font: 400 15px Calibri;  background-color: #eee;  padding-left: 90px;  
+                 border-color:red  }
+   .Choosed {   text-decoration: underline;        font-size: 1.08em;        color: purple;    }
+    a {  text-decoration: none;        color: darkgray;    }
+   a .disabled {        pointer-events: none;        cursor: pointer;        color: #aaa;    }
+                                       /* неактивная серая ссылка, курсор - стрелка */
+</style>
+    
+<div class="menuCand" >
+  <a href="/" id="home_Cand"> Главная </a > |
+  <a href="/candidate_resume" id="resume_Cand" onclick=" f_menuCand_1('resume_Cand', '/candidate_resume')">
+    Резюме</a > |
+ <a href="/candidate_vacancy" id="look_Cand" onclick="f_menuCand_1('look_Cand', '/candidate_vacancy')"> 
+    Просмотр вакансий</a > |
+    <a href="/candidate_vacancy_search" id="search_Cand"   onclick="f_menuCand_1('lookFor_Cand', '/candidate_vacancy_search')"> 
+    Поиск вакансий </a > |
+     <a href="/candidate_history" id="history_Cand" onclick="f_menuCand_1('history_Cand', '/candidate_history')"> 
+    История</a>  
+    </div >
